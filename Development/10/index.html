@@ -1,0 +1,440 @@
+<!doctype html><html lang=zh class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="C++ 快速设计界面库"><meta name=author content="SoUI Team"><link href=https://X.org/Development/10/ rel=canonical><link rel=icon href=../../assets/images/favicon.png><meta name=generator content="mkdocs-1.2.3, mkdocs-material-8.1.3"><title>4.10 自定义控件 - SoUI3官方文档</title><link rel=stylesheet href=../../assets/stylesheets/main.edf004c2.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.e6a45f82.min.css><meta name=theme-color content=#ffffff><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,400i,700%7CSource+Code+Pro&display=fallback"><style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style><link rel=stylesheet href=../../static/css/extra.css><script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script></head> <body dir=ltr data-md-color-scheme=preference data-md-color-primary=white data-md-color-accent=red> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#410 class=md-skip> 跳转至 </a> </div> <div data-md-component=announce> </div> <header class="md-header md-header--lifted" data-md-component=header> <nav class="md-header__inner md-grid" aria-label=页眉> <a href=../.. title=SoUI3官方文档 class="md-header__button md-logo" aria-label=SoUI3官方文档 data-md-component=logo> <img src=../../static/img/logo.png alt=logo> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> SoUI3官方文档 </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> 4.10 自定义控件 </span> </div> </div> </div> <div class=md-header__option> <div class=md-select> <button class="md-header__button md-icon" aria-label=选择当前语言> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg> </button> <div class=md-select__inner> <ul class=md-select__list> <li class=md-select__item> <a href=/ hreflang class=md-select__link> 中文 </a> </li> </ul> </div> </div> </div> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=搜索 placeholder=搜索 autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <nav class=md-search__options aria-label=查找> <a href=javascript:void(0) class="md-search__icon md-icon" aria-label=分享 data-clipboard data-clipboard-text data-md-component=search-share tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg> </a> <button type=reset class="md-search__icon md-icon" aria-label=清空当前内容 tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </nav> <div class=md-search__suggest data-md-component=search-suggest></div> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> 正在初始化搜索引擎 </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header__source> <a href=https://github.com/2926295173/soui3-docs/ title=前往仓库 class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg> </div> <div class=md-source__repository> 2926295173/soui3-docs </div> </a> </div> </nav> <nav class=md-tabs aria-label=标签 data-md-component=tabs> <div class="md-tabs__inner md-grid"> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=../.. class=md-tabs__link> Start </a> </li> <li class=md-tabs__item> <a href=../../Overview/10.md class=md-tabs__link> 概述 </a> </li> <li class=md-tabs__item> <a href=../../BuildSoUI/build.md class=md-tabs__link> 编译 </a> </li> <li class=md-tabs__item> <a href=../../Create/31.md class=md-tabs__link> 创建 </a> </li> <li class=md-tabs__item> <a href=../0.md class=md-tabs__link> 开发 </a> </li> <li class=md-tabs__item> <a href=../../Control/Summary.md class=md-tabs__link> 控件 </a> </li> <li class=md-tabs__item> <a href=../../Ask/Summary.md class=md-tabs__link> 提问 </a> </li> <li class=md-tabs__item> <a href=../../Others/1.md class=md-tabs__link> 其他 </a> </li> <li class=md-tabs__item> <a href=../../updatelog/ class=md-tabs__link> 更新 </a> </li> </ul> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary md-nav--lifted" aria-label=导航栏 data-md-level=0> <label class=md-nav__title for=__drawer> <a href=../.. title=SoUI3官方文档 class="md-nav__button md-logo" aria-label=SoUI3官方文档 data-md-component=logo> <img src=../../static/img/logo.png alt=logo> </a> SoUI3官方文档 </label> <div class=md-nav__source> <a href=https://github.com/2926295173/soui3-docs/ title=前往仓库 class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg> </div> <div class=md-source__repository> 2926295173/soui3-docs </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_1 type=checkbox id=__nav_1> <label class=md-nav__link for=__nav_1> Start <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Start data-md-level=1> <label class=md-nav__title for=__nav_1> <span class="md-nav__icon md-icon"></span> Start </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. class=md-nav__link> 简介 </a> </li> <li class=md-nav__item> <a href=../../discussion/ class=md-nav__link> 讨论交流与问题反馈 </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_2 type=checkbox id=__nav_2> <label class=md-nav__link for=__nav_2> 概述 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=概述 data-md-level=1> <label class=md-nav__title for=__nav_2> <span class="md-nav__icon md-icon"></span> 概述 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Overview/10.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Overview/11.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Overview/12.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Overview/13.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Overview/14.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_3 type=checkbox id=__nav_3> <label class=md-nav__link for=__nav_3> 编译 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=编译 data-md-level=1> <label class=md-nav__title for=__nav_3> <span class="md-nav__icon md-icon"></span> 编译 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../BuildSoUI/build.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_4 type=checkbox id=__nav_4> <label class=md-nav__link for=__nav_4> 创建 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=创建 data-md-level=1> <label class=md-nav__title for=__nav_4> <span class="md-nav__icon md-icon"></span> 创建 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Create/31.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Create/32.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Create/33.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Create/34.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_5 type=checkbox id=__nav_5> <label class=md-nav__link for=__nav_5> 开发 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=开发 data-md-level=1> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> 开发 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../0.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../1.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../2.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../3.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../4.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../5.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../6.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../7.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../8.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../9.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../10.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../11.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../12.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../13.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../14.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../15.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../16.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../17.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../18.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../19.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../20.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../21.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../22.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../23.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../24.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../25.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../26.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6 type=checkbox id=__nav_6> <label class=md-nav__link for=__nav_6> 控件 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=控件 data-md-level=1> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> 控件 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Control/Summary.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/51.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/52.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/53.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/54.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/55.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/56.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/57.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/58.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/59.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/510.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/511.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/512.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/513.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/514.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/515.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/516.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/517.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/518.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/519.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/520.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/521.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/522.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/523.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/524.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/525.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/526.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/527.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/528.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/529.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/530.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/531.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_7 type=checkbox id=__nav_7> <label class=md-nav__link for=__nav_7> 提问 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=提问 data-md-level=1> <label class=md-nav__title for=__nav_7> <span class="md-nav__icon md-icon"></span> 提问 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Ask/Summary.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Ask/1.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Ask/2.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Ask/3.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_8 type=checkbox id=__nav_8> <label class=md-nav__link for=__nav_8> 其他 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=其他 data-md-level=1> <label class=md-nav__title for=__nav_8> <span class="md-nav__icon md-icon"></span> 其他 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Others/1.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Others/2.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Others/3.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_9 type=checkbox id=__nav_9> <label class=md-nav__link for=__nav_9> 更新 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=更新 data-md-level=1> <label class=md-nav__title for=__nav_9> <span class="md-nav__icon md-icon"></span> 更新 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../updatelog/ class=md-nav__link> SOUI 更新到 2.0 </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label=目录> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> 目录 </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#4101 class=md-nav__link> 4.10.1 开发自定义控件 </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <a href=https://github.com/2926295173/soui3-docs/blob/main/docs/zh/docs/Development/10.md title=编辑此页 class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <h1 id=410>4.10 自定义控件<a class=headerlink href=#410 title="Permanent link">&para;</a></h1> <h2 id=4101>4.10.1 开发自定义控件<a class=headerlink href=#4101 title="Permanent link">&para;</a></h2> <p>在 SOUI 中已经提供了大部分常用的控件，但是内置控件不可能满足用户的所有要求，因 此一个真实的应用少不得还要做一些自定义控件。 学习一个新东西，最简单的办法就是依葫芦画瓢。事实上在 SOUI 系统中内置控件和自定 义控件的开发流程是完全一样的，因此只需要打开 SOUI 的源代码，随便找一个控件看一 下就大体差不多了。 下面我以 controls.extend 目录下的的 SRadioBox2 控件为例对控件开发过程需要注意的 地方做一点说明。 要开发一个控件，首先要确定的是应该从哪个控件来继承。选择一个合适的基类是正确开 发自定义控件的前提。 之所以要开发一个 SRadioBox2 控件，我需要解决的问题很简单：SRadioBox 控件总是在 左边显示一个圆圈，这个圆圈有时候不是我想要的。 因此我需要做的就是继承 SRadioBox 控件的行为，重写 WM_PAINT 的处理。 因此就有了下面的代码：</p> <div class=highlight><pre><span></span><code><span class=k>class</span> <span class=nc>SRadioBox2</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SRadioBox</span><span class=w></span>
+<span class=p>{</span><span class=w></span>
+<span class=k>public</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>SRadioBox2</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=o>~</span><span class=n>SRadioBox2</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+</code></pre></div> <p>需要注意的是，所有 SOUI 控件都是在 namespace SOUI 中，因此自定义控件也最好是 放在 SOUI 这个 namespace 里。 有了上面的骨架，下面来逐步添加内容。 首先我们需要给自定义控件定义一个在 XML 中可以识别的标签。 只需要在类的最开始增加一行：</p> <div class=highlight><pre><span></span><code><span class=k>class</span> <span class=nc>SRadioBox2</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SRadioBox</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_CLASS_NAME</span><span class=p>(</span><span class=n>SRadioBox2</span><span class=p>,</span><span class=sa>L</span><span class=s>&quot;radio2&quot;</span><span class=p>)</span><span class=w></span>
+<span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>SRadioBox2</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=o>~</span><span class=n>SRadioBox2</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=p>}</span><span class=w></span>
+<span class=w> </span><span class=err>```</span><span class=w></span>
+
+<span class=w> </span><span class=n>SOUI_CLASS_NAME</span><span class=w> </span><span class=err>告诉</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=err>解析器，碰到</span><span class=w> </span><span class=n>radio2</span><span class=w> </span><span class=err>时自动创建</span><span class=w> </span><span class=n>SRadioBox2</span><span class=w> </span><span class=err>对象。</span><span class=w></span>
+<span class=err>实际上这一行更重要的作用是用来做对象类型运行时识别（</span><span class=n>RTTI</span><span class=err>）</span><span class=p>,</span><span class=err>有了这个机制，在编译</span><span class=w></span>
+<span class=err>器关闭</span><span class=w> </span><span class=n>C</span><span class=o>++</span><span class=err>的</span><span class=w> </span><span class=n>RTTI</span><span class=w> </span><span class=err>时仍然可以安全的进行类型转换。</span><span class=w></span>
+<span class=err>然后我们需要处理控件的</span><span class=w> </span><span class=n>WM_PAINT</span><span class=w> </span><span class=err>消息。</span><span class=w></span>
+<span class=err>为了处理这个消息，我们需要加入消息映射表及消息处理函数：</span><span class=w></span>
+
+<span class=err>```</span><span class=n>cpp</span><span class=w></span>
+<span class=k>class</span> <span class=nc>SRadioBox2</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SRadioBox</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_CLASS_NAME</span><span class=p>(</span><span class=n>SRadioBox2</span><span class=p>,</span><span class=sa>L</span><span class=s>&quot;radio2&quot;</span><span class=p>)</span><span class=w></span>
+<span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
+<span class=n>SRadioBox2</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=o>~</span><span class=n>SRadioBox2</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span><span class=w> </span>
+<span class=w> </span><span class=k>protected</span><span class=o>:</span><span class=w> </span>
+<span class=w> </span><span class=kt>void</span><span class=w> </span><span class=n>OnPaint</span><span class=p>(</span><span class=n>IRenderTarget</span><span class=w> </span><span class=o>*</span><span class=n>pRT</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_MSG_MAP_BEGIN</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=n>MSG_WM_PAINT_EX</span><span class=p>(</span><span class=n>OnPaint</span><span class=p>)</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_MSG_MAP_END</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=p>};</span><span class=w></span>
+</code></pre></div> <p>SOUI 控件的消息处理机制是和 WTL 中抄过来的，和 MFC 也很相似。只是对于部分消 息，由于对于消息的参数的解释不一样，消息映射的宏会有一点变化。 如这里的 WM_PAINT 消息，在 SOUI 里 wparam 传递的是一个 IRenderTarget 指针，而 传统的 Win32 传递的是一个 HDC。因此我们需要使用 MSG_WM_PAINT_EX 代替 WTL 中使用的 MSG_WM_PAINT。 大家可能会问有哪些消息映射宏 SOUI 和 WLT 不一样？ 实际上对于一个有经验的程序员，他应该可以找到 MSG_WM_PAINT_EX 的宏定义，并且 在定义附近就可以找到所有的 SOUI 和 WLT 不同的映射宏。 下面是到目前为止 SOUI 中所有和 WTL 不同的宏：</p> <div class=highlight><pre><span></span><code><span class=c1>// BOOL OnEraseBkgnd(IRenderTarget * pRT)</span>
+<span class=cp>#define MSG_WM_ERASEBKGND_EX(func) \</span>
+<span class=cp> if (uMsg == WM_ERASEBKGND) \</span>
+<span class=cp> { \</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> lResult = (LRESULT)func((IRenderTarget *)wParam); \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp> }</span>
+<span class=c1>// void OnPaint(IRenderTarget * pRT)</span>
+<span class=cp>#define MSG_WM_PAINT_EX(func) \</span>
+<span class=cp> if (uMsg == WM_PAINT) \</span>
+<span class=cp> { \</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> func((IRenderTarget *)wParam); \</span>
+<span class=cp> lResult = 0; \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp> }</span>
+<span class=c1>// void OnNcPaint(IRenderTarget * pRT)</span>
+<span class=cp>#define MSG_WM_NCPAINT_EX(func) \</span>
+<span class=cp> if (uMsg == WM_NCPAINT) \</span>
+<span class=cp>{ \</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> func((IRenderTarget *)wParam); \</span>
+<span class=cp> lResult = 0; \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp>}</span>
+<span class=c1>// void OnSetFont(IFont *pFont, BOOL bRedraw)</span>
+<span class=cp>#define MSG_WM_SETFONT_EX(func) \</span>
+<span class=cp> if (uMsg == WM_SETFONT) \</span>
+<span class=cp> { \</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> func((IFont*)wParam, (BOOL)LOWORD(lParam)); \</span>
+<span class=cp> lResult = 0; \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp> }</span>
+<span class=c1>// void OnSetFocus()</span>
+<span class=cp>#define MSG_WM_SETFOCUS_EX(func) \</span>
+<span class=cp> if (uMsg == WM_SETFOCUS) \</span>
+<span class=cp>{ \</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> func(); \</span>
+<span class=cp> lResult = 0; \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp>}</span>
+<span class=c1>// void OnKillFocus()</span>
+<span class=cp>#define MSG_WM_KILLFOCUS_EX(func) \</span>
+<span class=cp> if (uMsg == WM_KILLFOCUS) \</span>
+<span class=cp>{ \</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> func(); \</span>
+<span class=cp> lResult = 0; \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp>}</span>
+<span class=c1>// void OnNcMouseHover(int nFlag,CPoint pt)</span>
+<span class=cp>#define MSG_WM_NCMOUSEHOVER(func) \</span>
+<span class=cp> if(uMsg==WM_NCMOUSEHOVER)\</span>
+<span class=cp>{\</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> func(wParam,CPoint(GET_X_LPARAM(lParam),GET_Y_LPARAM(lParam))); \</span>
+<span class=cp> lResult = 0; \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp>}</span>
+<span class=c1>// void OnNcMouseLeave()</span>
+<span class=cp>#define MSG_WM_NCMOUSELEAVE(func) \</span>
+<span class=cp> if(uMsg==WM_NCMOUSELEAVE)\</span>
+<span class=cp>{\</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> func(); \</span>
+<span class=cp> lResult = 0; \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp>}</span>
+<span class=c1>// void OnTimer(char cTimerID)</span>
+<span class=cp>#define MSG_WM_TIMER_EX(func) \</span>
+<span class=cp> if (uMsg == WM_TIMER) \</span>
+<span class=cp>{ \</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> func((char)wParam); \</span>
+<span class=cp> lResult = 0; \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp>}</span>
+<span class=cp>#define WM_TIMER2 (WM_USER+5432) </span><span class=c1>//定义一个与 HWND 定时器兼容的 SOUI 定时器</span>
+<span class=cp>#define MSG_WM_TIMER2(func) \</span>
+<span class=cp> if (uMsg == WM_TIMER2) \</span>
+<span class=cp>{ \</span>
+<span class=cp> SetMsgHandled(TRUE); \</span>
+<span class=cp> func(wParam); \</span>
+<span class=cp> lResult = 0; \</span>
+<span class=cp> if(IsMsgHandled()) \</span>
+<span class=cp> return TRUE; \</span>
+<span class=cp>}</span>
+<span class=err>通常情况下，自定义控件还需要处理一些自定义的属性，这时我需要还需要增加一个属性</span><span class=w></span>
+<span class=err>映射表（如</span><span class=w> </span><span class=n>SGifPlayer</span><span class=err>）：</span><span class=w></span>
+<span class=err>```</span><span class=n>cpp</span><span class=w></span>
+<span class=n>SOUI_ATTRS_BEGIN</span><span class=p>()</span><span class=w> </span>
+<span class=w> </span><span class=n>ATTR_CUSTOM</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;skin&quot;</span><span class=p>,</span><span class=w> </span><span class=n>OnAttrSkin</span><span class=p>)</span><span class=w> </span>
+<span class=c1>//为控件提供一个 skin 属性，用来接收 SSkinObj 对象的 name</span>
+<span class=w> </span><span class=n>SOUI_ATTRS_END</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=err>```</span><span class=w></span>
+
+<span class=err>完成上面几步，一个自定义控件基本上就完成了。</span><span class=w></span>
+<span class=err>可能还需要实现几个修改基类行为的虚函数。</span><span class=w></span>
+
+<span class=cp>## 4.10.2 绘图对象（ISkinObj）的扩展</span>
+
+<span class=err>尽管</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>已经内置了大部分常用的控件，很显然内置控件很难满足各种应用的形式各异</span><span class=w></span>
+<span class=err>的需求。</span><span class=w></span>
+<span class=err>因此只有提供足够的扩展性才能满足真实应用场景。</span><span class=w></span>
+<span class=err>除了将系统尽可能的组件化外，</span><span class=n>SOUI</span><span class=w> </span><span class=err>在控件自绘</span><span class=p>(</span><span class=n>SWindow</span><span class=p>)</span><span class=err>及绘图对象</span><span class=p>(</span><span class=n>ISkinObj</span><span class=p>)</span><span class=err>两个</span><span class=w></span>
+<span class=err>方面提供用户扩展。</span><span class=w></span>
+<span class=err>◆</span><span class=w> </span><span class=err>绘图对象</span><span class=p>(</span><span class=n>ISkinObj</span><span class=p>)</span><span class=err>的扩展</span><span class=w></span>
+<span class=err>系统内置了如</span><span class=w> </span><span class=n>SSkinImgList</span><span class=p>,</span><span class=w> </span><span class=n>SSkinImgFrame</span><span class=p>,</span><span class=w> </span><span class=n>SSkinScrollbar</span><span class=w> </span><span class=err>等绘图对象，在窗口中通</span><span class=w></span>
+<span class=err>过引用这些绘图对象可以绘制出不同的预定义图形图象（如按钮，滚动条，九宫格等）。</span><span class=w></span>
+<span class=err>实际上用户可以实现任意的绘图对象并把它们注册到系统里，以便在</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=err>及代码中使</span><span class=w></span>
+<span class=err>用。</span><span class=w></span>
+<span class=err>下面先看一下实现一个</span><span class=w> </span><span class=n>ISkinObj</span><span class=w> </span><span class=err>需要实现哪些接口：</span><span class=w></span>
+
+<span class=err>```</span><span class=n>cpp</span><span class=w></span>
+<span class=cm>/**</span>
+<span class=cm> * @struct ISkinObj</span>
+<span class=cm> * @brief Skin 对象</span>
+<span class=cm> * </span>
+<span class=cm> * Describe</span>
+<span class=cm> */</span><span class=w></span>
+<span class=w> </span><span class=k>class</span> <span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>ISkinObj</span> <span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SObject</span><span class=p>,</span><span class=k>public</span><span class=w></span>
+<span class=n>TObjRefImpl2</span><span class=o>&lt;</span><span class=n>IObjRef</span><span class=p>,</span><span class=n>ISkinObj</span><span class=o>&gt;</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>ISkinObj</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=p>}</span><span class=w></span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=o>~</span><span class=n>ISkinObj</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * Draw</span>
+<span class=cm> * @brief 将 this 绘制到 RenderTarget 上去</span>
+<span class=cm> * @param IRenderTarget * pRT -- 绘制用的 RenderTarget</span>
+<span class=cm> * @param LPCRECT rcDraw -- 绘制位置</span>
+<span class=cm> * @param DWORD dwState -- 绘制状态</span>
+<span class=cm> * @param BYTE byAlpha -- 透明度</span>
+<span class=cm> * @return void</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=n>Draw</span><span class=p>(</span><span class=n>IRenderTarget</span><span class=w> </span><span class=o>*</span><span class=n>pRT</span><span class=p>,</span><span class=w> </span><span class=n>LPCRECT</span><span class=w> </span><span class=n>rcDraw</span><span class=p>,</span><span class=w> </span><span class=n>DWORD</span><span class=w> </span>
+<span class=n>dwState</span><span class=p>,</span><span class=n>BYTE</span><span class=w> </span><span class=n>byAlpha</span><span class=o>=</span><span class=mh>0xFF</span><span class=p>)</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * GetSkinSize</span>
+<span class=cm> * @brief 获得 Skin 的默认大小</span>
+<span class=cm> * @return SIZE -- Skin 的默认大小</span>
+<span class=cm> * Describe 派生类应该根据 skin 的特点实现该接口</span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=n>SIZE</span><span class=w> </span><span class=nf>GetSkinSize</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=n>SIZE</span><span class=w> </span><span class=n>ret</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{</span><span class=mi>0</span><span class=p>,</span><span class=w> </span><span class=mi>0</span><span class=p>};</span><span class=w></span>
+<span class=w> </span><span class=k>return</span><span class=w> </span><span class=n>ret</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=p>}</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * IgnoreState</span>
+<span class=cm> * @brief 查询 skin 是否有状态信息</span>
+<span class=cm> * @return BOOL -- true 有状态信息</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=n>BOOL</span><span class=w> </span><span class=nf>IgnoreState</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=k>return</span><span class=w> </span><span class=n>TRUE</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=p>}</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * GetStates</span>
+<span class=cm> * @brief 获得 skin 对象包含的状态数量</span>
+<span class=cm> * @return int -- 状态数量</span>
+<span class=cm>* Describe 默认为 1</span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=kt>int</span><span class=w> </span><span class=nf>GetStates</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=k>return</span><span class=w> </span><span class=mi>1</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=p>}</span><span class=w></span>
+<span class=w> </span><span class=p>};</span><span class=w></span>
+</code></pre></div> <p>ISkinObj 是一个派生自 SObject 及 TObjRefImpl2<iobjref,iskinobj>的类，提供了几 个状态查询相关的接口，也提供了一个 Draw 接口来在 IRenderTarget 上绘制该绘制对 象。 注意的是，这些接口中只有 Draw 接口是纯虚接口。 在它的基类中，SOjbect 使得 ISkinObj 可以方便的从 XML 配置文件中初始化，而 TObjRefImpl2<iobjref,iskinobj>则提供引用计数的实现。 内置的 ISkinObj 不支持显示 GIF 图片，以显示 GIF 图象为例来分析如何扩展绘图对象来 支持 GIF 图片显示。 对象定义（trunk\controls.extend\gif\SSkinGif.h）</p> <div class=highlight><pre><span></span><code><span class=k>namespace</span><span class=w> </span><span class=nn>SOUI</span><span class=w></span>
+<span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=k>class</span> <span class=nc>SGifFrame</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>CAutoRefPtr</span><span class=o>&lt;</span><span class=n>IBitmap</span><span class=o>&gt;</span><span class=w> </span><span class=n>pBmp</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=kt>int</span><span class=w> </span><span class=n>nDelay</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=p>};</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * @class SSkinGif</span>
+<span class=cm> * @brief GIF 图片加载及显示对象</span>
+<span class=cm> * </span>
+<span class=cm> * Describe</span>
+<span class=cm> */</span><span class=w></span>
+<span class=w> </span><span class=k>class</span> <span class=nc>SSkinGif</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>ISkinObj</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_CLASS_NAME</span><span class=p>(</span><span class=n>SSkinGif</span><span class=p>,</span><span class=w> </span><span class=sa>L</span><span class=s>&quot;gif&quot;</span><span class=p>)</span><span class=w></span>
+<span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>SSkinGif</span><span class=p>()</span><span class=o>:</span><span class=n>m_nFrames</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span><span class=n>m_iFrame</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span><span class=n>m_pFrames</span><span class=p>(</span><span class=nb>NULL</span><span class=p>)</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=p>}</span><span class=w></span>
+<span class=c1>//初始化 GDI+环境，由于这里需要使用 GDI+来解码 GIF 文件格式</span>
+<span class=w> </span><span class=k>static</span><span class=w> </span><span class=n>BOOL</span><span class=w> </span><span class=n>Gdiplus_Startup</span><span class=p>();</span><span class=w></span>
+<span class=w> </span><span class=c1>//退出 GDI+环境</span>
+<span class=w> </span><span class=k>static</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>Gdiplus_Shutdown</span><span class=p>();</span><span class=w></span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=o>~</span><span class=n>SSkinGif</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=k>if</span><span class=p>(</span><span class=n>m_pFrames</span><span class=p>)</span><span class=w> </span><span class=k>delete</span><span class=w> </span><span class=p>[]</span><span class=w> </span><span class=n>m_pFrames</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=p>}</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * Draw</span>
+<span class=cm> * @brief 绘制指定帧的 GIF 图</span>
+<span class=cm> * @param IRenderTarget * pRT -- 绘制目标</span>
+<span class=cm> * @param LPCRECT rcDraw -- 绘制范围</span>
+<span class=cm> * @param DWORD dwState -- 绘制状态，这里被解释为帧号</span>
+<span class=cm> * @param BYTE byAlpha -- 透明度</span>
+<span class=cm> * @return void</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=n>Draw</span><span class=p>(</span><span class=n>IRenderTarget</span><span class=w> </span><span class=o>*</span><span class=n>pRT</span><span class=p>,</span><span class=w> </span><span class=n>LPCRECT</span><span class=w> </span><span class=n>rcDraw</span><span class=p>,</span><span class=w> </span><span class=n>DWORD</span><span class=w> </span>
+<span class=n>dwState</span><span class=p>,</span><span class=n>BYTE</span><span class=w> </span><span class=n>byAlpha</span><span class=o>=</span><span class=mh>0xFF</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * GetStates</span>
+<span class=cm> * @brief 获得 GIF 帧数</span>
+<span class=cm> * @return int -- 帧数</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=kt>int</span><span class=w> </span><span class=nf>GetStates</span><span class=p>(){</span><span class=k>return</span><span class=w> </span><span class=n>m_nFrames</span><span class=p>;}</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * GetSkinSize</span>
+<span class=cm> * @brief 获得图片大小</span>
+<span class=cm> * @return SIZE -- 图片大小</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=n>SIZE</span><span class=w> </span><span class=nf>GetSkinSize</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=n>SIZE</span><span class=w> </span><span class=n>sz</span><span class=o>=</span><span class=p>{</span><span class=mi>0</span><span class=p>};</span><span class=w></span>
+<span class=w> </span><span class=k>if</span><span class=p>(</span><span class=n>m_nFrames</span><span class=o>&gt;</span><span class=mi>0</span><span class=w> </span><span class=o>&amp;&amp;</span><span class=w> </span><span class=n>m_pFrames</span><span class=p>)</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=n>sz</span><span class=o>=</span><span class=n>m_pFrames</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=n>pBmp</span><span class=o>-&gt;</span><span class=n>Size</span><span class=p>();</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+<span class=w> </span><span class=k>return</span><span class=w> </span><span class=n>sz</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=p>}</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * GetFrameDelay</span>
+<span class=cm> * @brief 获得指定帧的显示时间</span>
+<span class=cm> * @param int iFrame -- 帧号,为-1 时代表获得当前帧的延时</span>
+<span class=cm> * @return long -- 延时时间(*10ms)</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=kt>long</span><span class=w> </span><span class=nf>GetFrameDelay</span><span class=p>(</span><span class=kt>int</span><span class=w> </span><span class=n>iFrame</span><span class=o>=</span><span class=mi>-1</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * ActiveNextFrame</span>
+<span class=cm> * @brief 激活下一帧</span>
+<span class=cm> * @return void </span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>ActiveNextFrame</span><span class=p>();</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * SelectActiveFrame</span>
+<span class=cm> * @brief 激活指定帧</span>
+<span class=cm> * @param int iFrame -- 帧号</span>
+<span class=cm> * @return void</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>SelectActiveFrame</span><span class=p>(</span><span class=kt>int</span><span class=w> </span><span class=n>iFrame</span><span class=p>);</span><span class=w></span>
+
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * LoadFromFile</span>
+<span class=cm> * @brief 从文件加载 GIF</span>
+<span class=cm> * @param LPCTSTR pszFileName -- 文件名</span>
+<span class=cm> * @return int -- GIF 帧数，0-失败</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=kt>int</span><span class=w> </span><span class=nf>LoadFromFile</span><span class=p>(</span><span class=n>LPCTSTR</span><span class=w> </span><span class=n>pszFileName</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * LoadFromMemory</span>
+<span class=cm> * @brief 从内存加载 GIF</span>
+<span class=cm>* @param LPVOID pBits -- 内存地址</span>
+<span class=cm> * @param size_t szData -- 内存数据长度</span>
+<span class=cm> * @return int -- GIF 帧数，0-失败</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=kt>int</span><span class=w> </span><span class=nf>LoadFromMemory</span><span class=p>(</span><span class=n>LPVOID</span><span class=w> </span><span class=n>pBits</span><span class=p>,</span><span class=kt>size_t</span><span class=w> </span><span class=n>szData</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_ATTRS_BEGIN</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=n>ATTR_CUSTOM</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;src&quot;</span><span class=p>,</span><span class=n>OnAttrSrc</span><span class=p>)</span><span class=w> </span><span class=c1>//XML 文件中指定的图片资源</span>
+<span class=err>名</span><span class=p>,(</span><span class=nl>type</span><span class=p>:</span><span class=n>name</span><span class=p>)</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_ATTRS_END</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=k>protected</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>LRESULT</span><span class=w> </span><span class=n>OnAttrSrc</span><span class=p>(</span><span class=k>const</span><span class=w> </span><span class=n>SStringW</span><span class=w> </span><span class=o>&amp;</span><span class=n>strValue</span><span class=p>,</span><span class=n>BOOL</span><span class=w> </span><span class=n>bLoading</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=kt>int</span><span class=w> </span><span class=nf>LoadFromGdipImage</span><span class=p>(</span><span class=n>Gdiplus</span><span class=o>::</span><span class=n>Bitmap</span><span class=w> </span><span class=o>*</span><span class=w> </span><span class=n>pImg</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=kt>int</span><span class=w> </span><span class=n>m_nFrames</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=kt>int</span><span class=w> </span><span class=n>m_iFrame</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=n>SGifFrame</span><span class=w> </span><span class=o>*</span><span class=w> </span><span class=n>m_pFrames</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=p>};</span><span class=w></span>
+<span class=p>}</span><span class=c1>//end of name space SOUI</span>
+</code></pre></div> <p>对象注册：</p> <div class=highlight><pre><span></span><code><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterSkinFactory</span><span class=p>(</span><span class=n>TplSkinFactory</span><span class=o>&lt;</span><span class=n>SSkinGif</span><span class=o>&gt;</span><span class=p>());</span><span class=w></span>
+<span class=c1>//注册 SkinGif</span>
+</code></pre></div> <p>对象的使用（trunk\demo\uires\xml\dlg_main.xml）：</p> <div class=highlight><pre><span></span><code><span class=w> </span><span class=o>&lt;</span><span class=n>skin</span><span class=o>&gt;</span><span class=w></span>
+<span class=w> </span><span class=o>&lt;!--</span><span class=err>局部</span><span class=w> </span><span class=n>skin</span><span class=w> </span><span class=err>对象</span><span class=o>--&gt;</span><span class=w></span>
+<span class=w> </span><span class=o>&lt;</span><span class=n>gif</span><span class=w> </span><span class=n>name</span><span class=o>=</span><span class=s>&quot;gif_horse&quot;</span><span class=w> </span><span class=n>src</span><span class=o>=</span><span class=s>&quot;gif:gif_horse&quot;</span><span class=o>/&gt;</span><span class=w></span>
+<span class=w> </span><span class=o>&lt;</span><span class=n>gif</span><span class=w> </span><span class=n>name</span><span class=o>=</span><span class=s>&quot;gif_penguin&quot;</span><span class=w> </span><span class=n>src</span><span class=o>=</span><span class=s>&quot;gif:gif_penguin&quot;</span><span class=o>/&gt;</span><span class=w></span>
+<span class=w> </span><span class=o>&lt;/</span><span class=n>skin</span><span class=o>&gt;</span><span class=w></span>
+<span class=w> </span><span class=err>```</span><span class=w></span>
+
+<span class=err>这里的</span><span class=w> </span><span class=n>gif</span><span class=w> </span><span class=err>标签与</span><span class=w> </span><span class=n>SSkinGif</span><span class=w> </span><span class=err>类中的宏</span><span class=w> </span><span class=n>SOUI_CLASS_NAME</span><span class=p>(</span><span class=n>SSkinGif</span><span class=p>,</span><span class=sa>L</span><span class=s>&quot;gif&quot;</span><span class=p>)</span><span class=err>中的“</span><span class=n>gif</span><span class=err>”</span><span class=w></span>
+<span class=err>是匹配的。</span><span class=w></span>
+<span class=err>到此，在布局</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=err>及程序中都可以获得这个</span><span class=w> </span><span class=n>SSkinGif</span><span class=w> </span><span class=err>对象的指针了。</span><span class=w></span>
+
+<span class=cp>## 4.10.3 控件的扩展</span>
+
+<span class=err>控件的扩展和绘图对象的扩展套路类似，也是先从系统提供的基础类派生，再注册到系</span><span class=w></span>
+<span class=err>统，最后再</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=err>或者代码中使用。</span><span class=w></span>
+<span class=err>和绘图对象不同在于，控件是</span><span class=w> </span><span class=n>UI</span><span class=err>，需要处理各种</span><span class=w> </span><span class=n>UI</span><span class=w> </span><span class=err>相关的消息以及向程序发出各种控件</span><span class=w></span>
+<span class=err>特有的事件。</span><span class=w></span>
+<span class=err>同样我们还是以</span><span class=w> </span><span class=n>GIF</span><span class=w> </span><span class=err>显示的控件为例（</span><span class=n>trunk</span><span class=err>\</span><span class=n>controls</span><span class=p>.</span><span class=n>extend</span><span class=err>\</span><span class=n>gif</span><span class=err>\</span><span class=n>SGifPlayer</span><span class=p>.</span><span class=n>h</span><span class=err>）：</span><span class=w></span>
+
+<span class=err>```</span><span class=n>cpp</span><span class=w></span>
+<span class=k>namespace</span><span class=w> </span><span class=nn>SOUI</span><span class=w></span>
+<span class=p>{</span><span class=w> </span><span class=cm>/**</span>
+<span class=cm> * @class SGifPlayer</span>
+<span class=cm> * @brief GIF 图片显示控件</span>
+<span class=cm> * </span>
+<span class=cm> * Describe</span>
+<span class=cm> */</span><span class=w></span>
+<span class=w> </span><span class=k>class</span> <span class=nc>SGifPlayer</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SWindow</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_CLASS_NAME</span><span class=p>(</span><span class=n>SGifPlayer</span><span class=p>,</span><span class=w> </span><span class=sa>L</span><span class=s>&quot;gifplayer&quot;</span><span class=p>)</span><span class=w> </span><span class=c1>//定义 GIF 控件在 XM 加的标签</span>
+<span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>SGifPlayer</span><span class=p>();</span><span class=w></span>
+<span class=w> </span><span class=o>~</span><span class=n>SGifPlayer</span><span class=p>();</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * PlayGifFile</span>
+<span class=cm> * @brief 在控件中播放一个 GIF 图片文件</span>
+<span class=cm> * @param LPCTSTR pszFileName -- 文件名</span>
+<span class=cm> * @return BOOL -- true:成功</span>
+<span class=cm> * Describe </span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=n>BOOL</span><span class=w> </span><span class=nf>PlayGifFile</span><span class=p>(</span><span class=n>LPCTSTR</span><span class=w> </span><span class=n>pszFileName</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=k>protected</span><span class=o>:</span><span class=c1>//SWindow 的虚函数</span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=n>CSize</span><span class=w> </span><span class=n>GetDesiredSize</span><span class=p>(</span><span class=n>LPRECT</span><span class=w> </span><span class=n>pRcContainer</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=k>public</span><span class=o>:</span><span class=c1>//属性处理</span>
+<span class=w> </span><span class=n>SOUI_ATTRS_BEGIN</span><span class=p>()</span><span class=w> </span>
+<span class=w> </span><span class=n>ATTR_CUSTOM</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;skin&quot;</span><span class=p>,</span><span class=w> </span><span class=n>OnAttrGif</span><span class=p>)</span><span class=w> </span><span class=c1>//为控件提供一个 skin 属性，用来接收</span>
+<span class=n>SSkinObj</span><span class=w> </span><span class=err>对象的</span><span class=w> </span><span class=n>name</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_ATTRS_END</span><span class=p>()</span><span class=w></span>
+<span class=w> </span><span class=k>protected</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>HRESULT</span><span class=w> </span><span class=n>OnAttrGif</span><span class=p>(</span><span class=k>const</span><span class=w> </span><span class=n>SStringW</span><span class=w> </span><span class=o>&amp;</span><span class=w> </span><span class=n>strValue</span><span class=p>,</span><span class=w> </span><span class=n>BOOL</span><span class=w> </span><span class=n>bLoading</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=k>protected</span><span class=o>:</span><span class=c1>//消息处理，SOUI 控件的消息处理和 WTL，MFC 很相似，采用相似的映射表，相同或</span>
+<span class=err>者相似的消息映射宏</span><span class=w> </span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * OnPaint</span>
+<span class=cm> * @brief 窗口绘制消息响应函数</span>
+<span class=cm> * @param IRenderTarget * pRT -- 绘制目标</span>
+<span class=cm> * @return void</span>
+<span class=cm> * Describe 注意这里的参数是 IRenderTarget *,而不是 WTL 中使用的 HDC，同时消息</span>
+<span class=cm>映射宏也变为 MSG_WM_PAINT_EX</span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=kt>void</span><span class=w> </span><span class=n>OnPaint</span><span class=p>(</span><span class=n>IRenderTarget</span><span class=w> </span><span class=o>*</span><span class=n>pRT</span><span class=p>);</span><span class=w></span>
+<span class=cm>/**</span>
+<span class=cm> * OnTimer</span>
+<span class=cm> * @brief SOUI 窗口的定时器处理函数</span>
+<span class=cm> * @param char cTimerID -- 定时器 ID，范围从 0-127。</span>
+<span class=cm> * @return void</span>
+<span class=cm> * Describe SOUI 控件的定时器是 Host 窗口定时器 ID 的分解，以方便所有的控件都通过</span>
+<span class=cm>Host 获得定时器的分发。</span>
+<span class=cm> * 注意使用 MSG_WM_TIMER_EX 来映射该消息。定时器使用</span>
+<span class=cm>SWindow::SetTimer 及 SWindow::KillTimer 来创建及释放。</span>
+<span class=cm> * 如果该定时器 ID 范围不能满足要求，可以使用 SWindow::SetTimer2 来创</span>
+<span class=cm>建。</span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>OnTimer</span><span class=p>(</span><span class=kt>char</span><span class=w> </span><span class=n>cTimerID</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=cm>/**</span>
+<span class=cm> * OnShowWindow</span>
+<span class=cm> * @brief 处理窗口显示消息</span>
+<span class=cm> * @param BOOL bShow -- true:显示</span>
+<span class=cm> * @param UINT nStatus -- 显示原因</span>
+<span class=cm> * @return void </span>
+<span class=cm> * Describe 参考 MSDN 的 WM_SHOWWINDOW 消息</span>
+<span class=cm> */</span><span class=w> </span>
+<span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>OnShowWindow</span><span class=p>(</span><span class=n>BOOL</span><span class=w> </span><span class=n>bShow</span><span class=p>,</span><span class=w> </span><span class=n>UINT</span><span class=w> </span><span class=n>nStatus</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=c1>//SOUI 控件消息映射表</span>
+<span class=w> </span><span class=n>SOUI_MSG_MAP_BEGIN</span><span class=p>()</span><span class=w> </span>
+<span class=w> </span><span class=n>MSG_WM_TIMER_EX</span><span class=p>(</span><span class=n>OnTimer</span><span class=p>)</span><span class=w> </span><span class=c1>//定时器消息</span>
+<span class=w> </span><span class=n>MSG_WM_PAINT_EX</span><span class=p>(</span><span class=n>OnPaint</span><span class=p>)</span><span class=w> </span><span class=c1>//窗口绘制消息</span>
+<span class=w> </span><span class=n>MSG_WM_SHOWWINDOW</span><span class=p>(</span><span class=n>OnShowWindow</span><span class=p>)</span><span class=c1>//窗口显示状态消息</span>
+<span class=w> </span><span class=n>SOUI_MSG_MAP_END</span><span class=p>()</span><span class=w> </span>
+<span class=w> </span><span class=k>private</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>SSkinGif</span><span class=w> </span><span class=o>*</span><span class=n>m_pgif</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=kt>int</span><span class=w> </span><span class=n>m_iCurFrame</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=p>};</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+</code></pre></div> <p>实现了该类以后，在 WinMain 中注册：</p> <div class=highlight><pre><span></span><code><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SGifPlayer</span><span class=o>&gt;</span><span class=p>());</span><span class=w></span>
+<span class=c1>//注册 GIFPlayer</span>
+</code></pre></div> <p>我们可以在布局 XML 中创建 GIF 控件控件并显示了 (trunk\demo\uires\xml\dlg_main.xml）：</p> <div class=highlight><pre><span></span><code> <span class=nt>&lt;gifplayer</span> <span class=na>pos=</span><span class=s>&quot;10,10&quot;</span> <span class=na>skin=</span><span class=s>&quot;gif_horse&quot;</span> <span class=na>name=</span><span class=s>&quot;giftest&quot;</span> 
+<span class=na>cursor=</span><span class=s>&quot;ANI_ARROW&quot;</span><span class=nt>/&gt;</span>
+ <span class=nt>&lt;button</span> <span class=na>width=</span><span class=s>&quot;250&quot;</span> <span class=na>height=</span><span class=s>&quot;30&quot;</span> <span class=na>name=</span><span class=s>&quot;btnSelectGif&quot;</span><span class=nt>&gt;</span>load gif 
+file<span class=nt>&lt;/button&gt;</span>
+ <span class=nt>&lt;gifplayer</span> <span class=na>pos=</span><span class=s>&quot;10,150&quot;</span> <span class=na>skin=</span><span class=s>&quot;gif_penguin&quot;</span><span class=nt>/&gt;</span>
+</code></pre></div> <p>上面的 gifplayer 节点即表示从 XML 中创建两个 SGifPlayer 类对象。 而 gifplayer 对象的 skin 属性则引用前面定义的 SSkinGif 对象。 备注： 实际上更多扩展技巧可以参考系统内置的控件的实现。内置控件与扩展控件唯一的区别就 在于由谁实现将控件向系统注册。 内置控件在 SOUI 内核初始化的时候自动注册，而扩展控件则需要手动增加一行注册代 码。 效果预览</p> </article> </div> </div> </main> <footer class=md-footer> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-copyright> <div class=md-copyright__highlight> Copyright &copy; 2016 - 2021 SoUI Team </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script> <script src=../../assets/javascripts/bundle.e1a181d9.min.js></script> <script src=https://cdnjs.loli.net/ajax/libs/pangu/3.3.0/pangu.min.js></script> <script src=../../static/js/extra.js></script> <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script> </body> </html>

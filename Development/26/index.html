@@ -1,0 +1,320 @@
+<!doctype html><html lang=zh class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="C++ 快速设计界面库"><meta name=author content="SoUI Team"><link href=https://X.org/Development/26/ rel=canonical><link rel=icon href=../../assets/images/favicon.png><meta name=generator content="mkdocs-1.2.3, mkdocs-material-8.1.3"><title>4.26 使用 SOUI 的 SMCListView 控件 - SoUI3官方文档</title><link rel=stylesheet href=../../assets/stylesheets/main.edf004c2.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.e6a45f82.min.css><meta name=theme-color content=#ffffff><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,400i,700%7CSource+Code+Pro&display=fallback"><style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style><link rel=stylesheet href=../../static/css/extra.css><script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script></head> <body dir=ltr data-md-color-scheme=preference data-md-color-primary=white data-md-color-accent=red> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#426-soui-smclistview class=md-skip> 跳转至 </a> </div> <div data-md-component=announce> </div> <header class="md-header md-header--lifted" data-md-component=header> <nav class="md-header__inner md-grid" aria-label=页眉> <a href=../.. title=SoUI3官方文档 class="md-header__button md-logo" aria-label=SoUI3官方文档 data-md-component=logo> <img src=../../static/img/logo.png alt=logo> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> SoUI3官方文档 </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> 4.26 使用 SOUI 的 SMCListView 控件 </span> </div> </div> </div> <div class=md-header__option> <div class=md-select> <button class="md-header__button md-icon" aria-label=选择当前语言> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg> </button> <div class=md-select__inner> <ul class=md-select__list> <li class=md-select__item> <a href=/ hreflang class=md-select__link> 中文 </a> </li> </ul> </div> </div> </div> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=搜索 placeholder=搜索 autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <nav class=md-search__options aria-label=查找> <a href=javascript:void(0) class="md-search__icon md-icon" aria-label=分享 data-clipboard data-clipboard-text data-md-component=search-share tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg> </a> <button type=reset class="md-search__icon md-icon" aria-label=清空当前内容 tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </nav> <div class=md-search__suggest data-md-component=search-suggest></div> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> 正在初始化搜索引擎 </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header__source> <a href=https://github.com/2926295173/soui3-docs/ title=前往仓库 class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg> </div> <div class=md-source__repository> 2926295173/soui3-docs </div> </a> </div> </nav> <nav class=md-tabs aria-label=标签 data-md-component=tabs> <div class="md-tabs__inner md-grid"> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=../.. class=md-tabs__link> Start </a> </li> <li class=md-tabs__item> <a href=../../Overview/10.md class=md-tabs__link> 概述 </a> </li> <li class=md-tabs__item> <a href=../../BuildSoUI/build.md class=md-tabs__link> 编译 </a> </li> <li class=md-tabs__item> <a href=../../Create/31.md class=md-tabs__link> 创建 </a> </li> <li class=md-tabs__item> <a href=../0.md class=md-tabs__link> 开发 </a> </li> <li class=md-tabs__item> <a href=../../Control/Summary.md class=md-tabs__link> 控件 </a> </li> <li class=md-tabs__item> <a href=../../Ask/Summary.md class=md-tabs__link> 提问 </a> </li> <li class=md-tabs__item> <a href=../../Others/1.md class=md-tabs__link> 其他 </a> </li> <li class=md-tabs__item> <a href=../../updatelog/ class=md-tabs__link> 更新 </a> </li> </ul> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary md-nav--lifted" aria-label=导航栏 data-md-level=0> <label class=md-nav__title for=__drawer> <a href=../.. title=SoUI3官方文档 class="md-nav__button md-logo" aria-label=SoUI3官方文档 data-md-component=logo> <img src=../../static/img/logo.png alt=logo> </a> SoUI3官方文档 </label> <div class=md-nav__source> <a href=https://github.com/2926295173/soui3-docs/ title=前往仓库 class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg> </div> <div class=md-source__repository> 2926295173/soui3-docs </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_1 type=checkbox id=__nav_1> <label class=md-nav__link for=__nav_1> Start <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Start data-md-level=1> <label class=md-nav__title for=__nav_1> <span class="md-nav__icon md-icon"></span> Start </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. class=md-nav__link> 简介 </a> </li> <li class=md-nav__item> <a href=../../discussion/ class=md-nav__link> 讨论交流与问题反馈 </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_2 type=checkbox id=__nav_2> <label class=md-nav__link for=__nav_2> 概述 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=概述 data-md-level=1> <label class=md-nav__title for=__nav_2> <span class="md-nav__icon md-icon"></span> 概述 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Overview/10.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Overview/11.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Overview/12.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Overview/13.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Overview/14.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_3 type=checkbox id=__nav_3> <label class=md-nav__link for=__nav_3> 编译 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=编译 data-md-level=1> <label class=md-nav__title for=__nav_3> <span class="md-nav__icon md-icon"></span> 编译 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../BuildSoUI/build.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_4 type=checkbox id=__nav_4> <label class=md-nav__link for=__nav_4> 创建 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=创建 data-md-level=1> <label class=md-nav__title for=__nav_4> <span class="md-nav__icon md-icon"></span> 创建 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Create/31.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Create/32.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Create/33.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Create/34.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_5 type=checkbox id=__nav_5> <label class=md-nav__link for=__nav_5> 开发 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=开发 data-md-level=1> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> 开发 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../0.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../1.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../2.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../3.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../4.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../5.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../6.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../7.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../8.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../9.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../10.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../11.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../12.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../13.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../14.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../15.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../16.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../17.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../18.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../19.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../20.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../21.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../22.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../23.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../24.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../25.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../26.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6 type=checkbox id=__nav_6> <label class=md-nav__link for=__nav_6> 控件 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=控件 data-md-level=1> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> 控件 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Control/Summary.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/51.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/52.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/53.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/54.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/55.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/56.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/57.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/58.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/59.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/510.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/511.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/512.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/513.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/514.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/515.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/516.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/517.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/518.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/519.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/520.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/521.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/522.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/523.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/524.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/525.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/526.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/527.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/528.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/529.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/530.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Control/531.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_7 type=checkbox id=__nav_7> <label class=md-nav__link for=__nav_7> 提问 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=提问 data-md-level=1> <label class=md-nav__title for=__nav_7> <span class="md-nav__icon md-icon"></span> 提问 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Ask/Summary.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Ask/1.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Ask/2.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Ask/3.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_8 type=checkbox id=__nav_8> <label class=md-nav__link for=__nav_8> 其他 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=其他 data-md-level=1> <label class=md-nav__title for=__nav_8> <span class="md-nav__icon md-icon"></span> 其他 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../Others/1.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Others/2.md class=md-nav__link> None </a> </li> <li class=md-nav__item> <a href=../../Others/3.md class=md-nav__link> None </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_9 type=checkbox id=__nav_9> <label class=md-nav__link for=__nav_9> 更新 <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=更新 data-md-level=1> <label class=md-nav__title for=__nav_9> <span class="md-nav__icon md-icon"></span> 更新 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../updatelog/ class=md-nav__link> SOUI 更新到 2.0 </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label=目录> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <a href=https://github.com/2926295173/soui3-docs/blob/main/docs/zh/docs/Development/26.md title=编辑此页 class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg> </a> <h1 id=426-soui-smclistview>4.26 使用 SOUI 的 SMCListView 控件<a class=headerlink href=#426-soui-smclistview title="Permanent link">&para;</a></h1> <p>列表控件是客户端应用最常用的控件之一。列表控件通常只负责显示数据，最多通知一下 APP 列表行的选中状态变化。 现在的 UI 经常要求程序猿在列表控件里不光显示内容，还要能和用户交互，显示动画等 等，传统的列表控件对于这样的需求基本是无能为力了。 Android 开发中很多界面都直接采用 ListView 实现，ListView 中每一个 Item 中都可以容 纳其它控件，这样的设计使得在表项中的交互和在主面板上交互一样简单。 虽然在列表项中容纳其它控件并不是什么新的思想，考虑到列表中的数据量是不确定的， 如果给每一个表项的分配一个容器窗口，系统的内存占用及效率都成问题。 还好 Andriod 开源，简单看一下 Android 里 ListView 控件的源代码就可以发现， Android 实现的 ListView 关键在于容器窗口的重用。 借鉴 Andriod ListView 控件的思想，在 SOUI 中也实现了对应的 ListView 控件。但是 ListView 只有一列，显示显示复杂内容问题不大，但是不能调整列宽等，和一个 ListCtrl 的功能还是有些差距。 多列列表和单列表最大的区别在于多了一个表头，核心的东西并没有区别，经过近 3 天的 编码调试，终于完成了这个革命性的控件（至少我认为是 Windows UI 上革命性的）。 先看下效果：</p> <p>SMCListView 控件的使用： XML 配置： 要使用这个列表控件，首先应该在 XML 中定义该控件的位置及属性，参考下面摘自 demo 的代码：</p> <div class=highlight><pre><span></span><code><span class=nt>&lt;mclistview</span> <span class=na>name=</span><span class=s>&quot;mclv_test&quot;</span> <span class=na>colorBkgnd=</span><span class=s>&quot;#ffffff&quot;</span> <span class=na>pos=</span><span class=s>&quot;10,10,-10,-10&quot;</span> 
+<span class=na>headerHeight=</span><span class=s>&quot;30&quot;</span><span class=nt>&gt;</span>
+ <span class=nt>&lt;header</span> <span class=na>align=</span><span class=s>&quot;center&quot;</span> <span class=na>sortSkin=</span><span class=s>&quot;skin_lcex_header_arrow&quot;</span> 
+<span class=na>itemSkin=</span><span class=s>&quot;skin_lcex_header&quot;</span> <span class=na>itemSwapEnable=</span><span class=s>&quot;1&quot;</span> <span class=na>fixWidth=</span><span class=s>&quot;0&quot;</span> 
+<span class=na>font=</span><span class=s>&quot;underline:0,adding:-3&quot;</span> <span class=na>sortHeader=</span><span class=s>&quot;1&quot;</span> <span class=na>colorBkgnd=</span><span class=s>&quot;#ffffff&quot;</span> <span class=nt>&gt;</span>
+ <span class=nt>&lt;items&gt;</span>
+ <span class=nt>&lt;item</span> <span class=na>width=</span><span class=s>&quot;480&quot;</span><span class=nt>&gt;</span>软件名称<span class=nt>&lt;/item&gt;</span>
+ <span class=nt>&lt;item</span> <span class=na>width=</span><span class=s>&quot;95&quot;</span><span class=nt>&gt;</span>软件评分<span class=nt>&lt;/item&gt;</span>
+ <span class=nt>&lt;item</span> <span class=na>width=</span><span class=s>&quot;100&quot;</span><span class=nt>&gt;</span>大小<span class=nt>&lt;/item&gt;</span>
+ <span class=nt>&lt;item</span> <span class=na>width=</span><span class=s>&quot;100&quot;</span><span class=nt>&gt;</span>安装时间<span class=nt>&lt;/item&gt;</span>
+ <span class=nt>&lt;item</span> <span class=na>width=</span><span class=s>&quot;100&quot;</span><span class=nt>&gt;</span>使用频率<span class=nt>&lt;/item&gt;</span>
+ <span class=nt>&lt;item</span> <span class=na>width=</span><span class=s>&quot;100&quot;</span><span class=nt>&gt;</span>操作<span class=nt>&lt;/item&gt;</span>
+ <span class=nt>&lt;/items&gt;</span>
+ <span class=nt>&lt;/header&gt;</span>
+ <span class=nt>&lt;template</span> <span class=na>itemHeight=</span><span class=s>&quot;80&quot;</span> <span class=na>colorHover=</span><span class=s>&quot;#cccccc&quot;</span> 
+<span class=na>colorSelected=</span><span class=s>&quot;#0000ff&quot;</span> <span class=na>id=</span><span class=s>&quot;30000&quot;</span><span class=nt>&gt;</span>
+ <span class=nt>&lt;window</span> <span class=na>name=</span><span class=s>&quot;col1&quot;</span><span class=nt>&gt;</span>
+ <span class=nt>&lt;img</span> <span class=na>name=</span><span class=s>&quot;img_icon&quot;</span> <span class=na>skin=</span><span class=s>&quot;skin_icon6&quot;</span> <span class=na>pos=</span><span class=s>&quot;10,8,@64,@64&quot;</span><span class=nt>/&gt;</span>
+ <span class=nt>&lt;text</span> <span class=na>name=</span><span class=s>&quot;txt_name&quot;</span> <span class=na>pos=</span><span class=s>&quot;[5,16&quot;</span> <span class=na>font=</span><span class=s>&quot;bold:1,adding:-1&quot;</span><span class=nt>&gt;</span>火狐浏
+览器<span class=nt>&lt;/text&gt;</span>
+ <span class=nt>&lt;text</span> <span class=na>name=</span><span class=s>&quot;txt_desc&quot;</span> <span class=na>pos=</span><span class=s>&quot;{0,36,-10,-10&quot;</span> <span class=na>font=</span><span class=s>&quot;bold:1,adding:-</span>
+<span class=s>4&quot;</span> <span class=na>dotted=</span><span class=s>&quot;1&quot;</span><span class=nt>&gt;</span>速度最快的浏览器<span class=nt>&lt;/text&gt;</span>
+ <span class=nt>&lt;text</span> <span class=na>name=</span><span class=s>&quot;txt_index&quot;</span> <span class=na>pos=</span><span class=s>&quot;|0,|0&quot;</span> <span class=na>offset=</span><span class=s>&quot;-0.5,-0.5&quot;</span> 
+<span class=na>font=</span><span class=s>&quot;adding:10&quot;</span> <span class=na>colorText=</span><span class=s>&quot;#ff000088&quot;</span><span class=nt>&gt;</span>10<span class=nt>&lt;/text&gt;</span>
+ <span class=nt>&lt;/window&gt;</span>
+ <span class=nt>&lt;window</span> <span class=na>name=</span><span class=s>&quot;col2&quot;</span><span class=nt>&gt;</span>
+ <span class=nt>&lt;ratingbar</span> <span class=na>name=</span><span class=s>&quot;rating_score&quot;</span> <span class=na>starSkin=</span><span class=s>&quot;skin_star1&quot;</span> 
+<span class=na>starNum=</span><span class=s>&quot;5&quot;</span> <span class=na>value=</span><span class=s>&quot;3.5&quot;</span> <span class=na>pos=</span><span class=s>&quot;10,16&quot;</span> <span class=nt>/&gt;</span>
+ <span class=nt>&lt;text</span> <span class=na>name=</span><span class=s>&quot;txt_score&quot;</span> <span class=na>pos=</span><span class=s>&quot;15,36,50,-16&quot;</span> <span class=na>font=</span><span class=s>&quot;adding:-</span>
+<span class=s>5&quot;</span> <span class=nt>&gt;</span>8.5 分<span class=nt>&lt;/text&gt;</span>
+ <span class=nt>&lt;link</span> <span class=na>pos=</span><span class=s>&quot;[5,36,@30,-16&quot;</span> <span class=na>cursor=</span><span class=s>&quot;hand&quot;</span> <span class=na>colorText=</span><span class=s>&quot;#1e78d5&quot;</span> 
+<span class=na>href=</span><span class=s>&quot;www.163.com&quot;</span> <span class=na>font=</span><span class=s>&quot;adding:-5&quot;</span> <span class=nt>&gt;</span>投票<span class=nt>&lt;/link&gt;</span>
+ <span class=nt>&lt;/window&gt;</span>
+ <span class=nt>&lt;window</span> <span class=na>name=</span><span class=s>&quot;col3&quot;</span><span class=nt>&gt;</span>
+ <span class=nt>&lt;text</span> <span class=na>name=</span><span class=s>&quot;txt_size&quot;</span> <span class=na>pos=</span><span class=s>&quot;0,26,-0,-26&quot;</span> <span class=na>font=</span><span class=s>&quot;adding:-4&quot;</span> 
+<span class=na>align=</span><span class=s>&quot;center&quot;</span> <span class=nt>&gt;</span>85.92M<span class=nt>&lt;/text&gt;</span>
+ <span class=nt>&lt;/window&gt;</span>
+ <span class=nt>&lt;window</span> <span class=na>name=</span><span class=s>&quot;col4&quot;</span><span class=nt>&gt;</span>
+<span class=nt>&lt;text</span> <span class=na>name=</span><span class=s>&quot;txt_installtime&quot;</span> <span class=na>pos=</span><span class=s>&quot;0,26,-0,-26&quot;</span> <span class=na>font=</span><span class=s>&quot;adding:-4&quot;</span> 
+<span class=na>align=</span><span class=s>&quot;center&quot;</span> <span class=nt>&gt;</span>2015-01-09<span class=nt>&lt;/text&gt;</span>
+ <span class=nt>&lt;/window&gt;</span>
+ <span class=nt>&lt;window</span> <span class=na>name=</span><span class=s>&quot;col5&quot;</span><span class=nt>&gt;</span>
+ <span class=nt>&lt;text</span> <span class=na>name=</span><span class=s>&quot;txt_usetime&quot;</span> <span class=na>pos=</span><span class=s>&quot;0,26,-0,-26&quot;</span> <span class=na>font=</span><span class=s>&quot;adding:-4&quot;</span> 
+<span class=na>align=</span><span class=s>&quot;center&quot;</span> <span class=nt>&gt;</span>今天<span class=nt>&lt;/text&gt;</span>
+ <span class=nt>&lt;animateimg</span> <span class=na>pos=</span><span class=s>&quot;|0,|0&quot;</span> <span class=na>offset=</span><span class=s>&quot;-0.5,-0.5&quot;</span> <span class=na>skin=</span><span class=s>&quot;skin_busy&quot;</span> 
+<span class=na>name=</span><span class=s>&quot;ani_test&quot;</span> <span class=na>tip=</span><span class=s>&quot;animateimg is used here&quot;</span> <span class=na>msgTransparent=</span><span class=s>&quot;0&quot;</span> <span class=nt>/&gt;</span>
+ <span class=nt>&lt;/window&gt;</span>
+ <span class=nt>&lt;window</span> <span class=na>name=</span><span class=s>&quot;col6&quot;</span><span class=nt>&gt;</span>
+ <span class=nt>&lt;imgbtn</span> <span class=na>animate=</span><span class=s>&quot;1&quot;</span> <span class=na>pos=</span><span class=s>&quot;|-35,|-14&quot;</span> <span class=na>font=</span><span class=s>&quot;adding:-3&quot;</span> 
+<span class=na>align=</span><span class=s>&quot;center&quot;</span> <span class=na>skin=</span><span class=s>&quot;skin_install&quot;</span> <span class=na>name=</span><span class=s>&quot;btn_uninstall&quot;</span><span class=nt>&gt;</span>卸载<span class=nt>&lt;/imgbtn&gt;</span>
+ <span class=nt>&lt;/window&gt;</span> 
+ <span class=nt>&lt;/template&gt;</span>
+ <span class=nt>&lt;/mclistview&gt;</span>
+ ```
+
+ mclistview 有一个属性 headerHeight，该属性定义表头的显示高度。
+节点下有一个 header 控件，用来定义表头控件的样式，都很简单，自己看 XML。
+最关键的在于下面的 template（模板）节点，该 XML 节点用来定义如何显示列表项。
+模板内样式的定义其实并没有特别的规定，因为最后如何解析这个模板是由 APP 决定的，
+但推荐使用上面的样式：template 节点下为每一列定义一个 window 节点，只需要指定
+一个 name 属性（当然也可以指定其它的窗口属性，布局属性无效）。在该 window 节点
+下可以定义任意的其它控件。
+代码编写：
+和 listview 控件一样，mclistview 也需要 XML 和代码配合才能正确显示数据。
+要使用 mclistview，首先需要实现一个数据适配器（IMcAdapter，继承自 SListView 中
+实现的 IAdapter)，还是先看 demo 中的实现：
+
+```cpp
+class CTestMcAdapterFix : public SMcAdapterBase
+{
+public:
+struct SOFTINFO
+{
+ wchar_t * pszSkinName;
+ wchar_t * pszName;
+ wchar_t * pszDesc;
+ float fScore;
+ DWORD dwSize;
+ wchar_t * pszInstallTime;
+ wchar_t * pszUseTime;
+};
+static SOFTINFO s_info[];
+public:
+ CTestMcAdapterFix()
+ {
+ }
+ virtual int getCount()
+ {
+ return 12340;
+ } 
+ SStringT getSizeText(DWORD dwSize)
+ {
+ int num1=dwSize/(1<span class=err>&lt;</span><span class=nt>&lt;20</span><span class=err>);</span>
+ <span class=err>dwSize</span> <span class=na>-=</span> <span class=s>num1</span> <span class=err>*(1&lt;&lt;20);</span>
+ <span class=err>int</span> <span class=na>num2 =</span> <span class=s>dwSize*100/(1&lt;&lt;20);</span>
+ <span class=err>return</span> <span class=err>SStringT().Format(_T(&quot;%d.%02dM&quot;),num1,num2);</span>
+ <span class=err>}</span>
+
+ <span class=err>virtual</span> <span class=err>void</span> <span class=err>getView(int</span> <span class=err>position,</span> <span class=err>SWindow</span> <span class=err>*</span> <span class=err>pItem,pugi::xml_node</span> 
+<span class=err>xmlTemplate)</span>
+ <span class=err>{</span>
+ <span class=err>if(pItem-</span><span class=nt>&gt;</span>GetChildrenCount()==0)
+ {
+ pItem-&gt;InitFromXml(xmlTemplate);
+ }
+ int dataSize = 7;
+ SOFTINFO *psi = s_info+position%dataSize;
+
+pItem-&gt;FindChildByName(L&quot;img_icon&quot;)-&gt;SetAttribute(L&quot;skin&quot;,psi-&gt;pszSkinName);
+
+pItem-&gt;FindChildByName(L&quot;txt_name&quot;)-&gt;SetWindowText(S_CW2T(psi-&gt;pszName));
+
+pItem-&gt;FindChildByName(L&quot;txt_desc&quot;)-&gt;SetWindowText(S_CW2T(psi-&gt;pszDesc));
+
+pItem-&gt;FindChildByName(L&quot;txt_score&quot;)-&gt;SetWindowText(SStringT().Format(_T(&quot;%1
+.2f 分&quot;),psi-&gt;fScore));
+
+pItem-&gt;FindChildByName(L&quot;txt_installtime&quot;)-&gt;SetWindowText(S_CW2T(psi-&gt;pszIns
+tallTime));
+
+pItem-&gt;FindChildByName(L&quot;txt_usetime&quot;)-&gt;SetWindowText(S_CW2T(psi-&gt;pszUseTime
+));
+pItem-&gt;FindChildByName(L&quot;txt_size&quot;)-&gt;SetWindowText(getSizeText(psi-&gt;dwSize))
+;
+
+pItem-&gt;FindChildByName2<span class=nt>&lt;SRatingBar&gt;</span>(L&quot;rating_score&quot;)-&gt;SetValue(psi-&gt;fScore/2
+);
+
+pItem-&gt;FindChildByName(L&quot;txt_index&quot;)-&gt;SetWindowText(SStringT().Format(_T(&quot;
+第%d 行&quot;),position));
+
+ SButton *pBtnUninstall =
+pItem-&gt;FindChildByName2<span class=nt>&lt;SButton&gt;</span>(L&quot;btn_uninstall&quot;);
+ pBtnUninstall-&gt;SetUserData(position);
+
+pBtnUninstall-&gt;GetEventSet()-&gt;subscribeEvent(EVT_CMD,Subscriber(<span class=err>&amp;</span>CTestMcAdap
+terFix::OnButtonClick,this));
+ }
+ bool OnButtonClick(EventArgs *pEvt)
+ {
+ SButton *pBtn = sobj_cast<span class=nt>&lt;SButton&gt;</span>(pEvt-&gt;sender);
+ int iItem = pBtn-&gt;GetUserData();
+ SMessageBox(NULL,SStringT().Format(_T(&quot;button of %d item was 
+clicked&quot;),iItem),_T(&quot;uninstall&quot;),MB_OK);
+ return true;
+ }
+ SStringW GetColumnName(int iCol) const{
+ return SStringW().Format(L&quot;col%d&quot;,iCol+1);
+ } 
+ struct SORTCTX
+ {
+ int iCol;
+ SHDSORTFLAG stFlag;
+ }; 
+ bool OnSort(int iCol,SHDSORTFLAG * stFlags,int nCols)
+ {
+ if(iCol==5) //最后一列“操作”不支持排序
+ return false; 
+ SHDSORTFLAG stFlag = stFlags[iCol];
+ switch(stFlag)
+ {
+ case ST_NULL:stFlag = ST_UP;break;
+ case ST_DOWN:stFlag = ST_UP;break;
+ case ST_UP:stFlag = ST_DOWN;break;
+}
+ for(int i=0;i<span class=nt>&lt;nCols</span><span class=err>;i++)</span>
+ <span class=err>{</span>
+ <span class=err>stFlags[i]=ST_NULL;</span>
+ <span class=err>}</span>
+ <span class=err>stFlags[iCol]=stFlag;</span> 
+ <span class=err>SORTCTX</span> <span class=na>ctx=</span><span class=s>{iCol,stFlag};</span>
+ <span class=err>qsort_s(s_info,7,sizeof(SOFTINFO),SortCmp,&amp;ctx);</span>
+ <span class=err>return</span> <span class=err>true;</span>
+ <span class=err>}</span> 
+ <span class=err>static</span> <span class=err>int</span> <span class=err>__cdecl</span> <span class=err>SortCmp(void</span> <span class=err>*context,const</span> <span class=err>void</span> <span class=err>*</span> <span class=err>p1,const</span> <span class=err>void</span> <span class=err>*</span> <span class=err>p2)</span>
+ <span class=err>{</span>
+ <span class=err>SORTCTX</span> <span class=err>*</span><span class=na>pctx =</span> <span class=s>(SORTCTX*)context;</span>
+ <span class=err>const</span> <span class=err>SOFTINFO</span> <span class=err>*</span><span class=na>pSI1=</span><span class=s>(const</span> <span class=err>SOFTINFO*)p1;</span>
+ <span class=err>const</span> <span class=err>SOFTINFO</span> <span class=err>*</span><span class=na>pSI2=</span><span class=s>(const</span> <span class=err>SOFTINFO*)p2;</span>
+ <span class=err>int</span> <span class=na>nRet =</span><span class=s>0;</span>
+ <span class=err>switch(pctx-</span><span class=nt>&gt;</span>iCol)
+ {
+ case 0://name
+ nRet = wcscmp(pSI1-&gt;pszName,pSI2-&gt;pszName);
+ break;
+ case 1://score
+ {
+ float fCmp = (pSI1-&gt;fScore - pSI2-&gt;fScore);
+ if(fabs(fCmp)<span class=nt>&lt;0.0000001</span><span class=err>)</span> <span class=na>nRet =</span> <span class=s>0;</span>
+ <span class=err>else</span> <span class=err>if(fCmp</span><span class=nt>&gt;</span>0.0f) nRet = 1;
+ else nRet = -1;
+ }
+ break;
+ case 2://size
+ nRet = (int)(pSI1-&gt;dwSize - pSI2-&gt;dwSize);
+ break;
+ case 3://install time
+ nRet = wcscmp(pSI1-&gt;pszInstallTime,pSI2-&gt;pszInstallTime);
+ break;
+ case 4://user time
+ nRet = wcscmp(pSI1-&gt;pszUseTime,pSI2-&gt;pszUseTime);
+ break;
+ }
+ if(pctx-&gt;stFlag == ST_UP)
+ nRet = -nRet;
+ return nRet;
+ }
+};
+CTestMcAdapterFix::SOFTINFO CTestMcAdapterFix::s_info[] =
+{
+ {
+ L&quot;skin_icon1&quot;,
+ L&quot;鲁大师&quot;,
+ L&quot;鲁大师是一款专业的硬件检测，驱动安装工具&quot;,
+ 5.4f,
+ 15*(1<span class=err>&lt;</span><span class=nt>&lt;20</span><span class=err>),</span>
+ <span class=err>L&quot;2015-8-5&quot;,</span>
+ <span class=err>L&quot;今天&quot;</span>
+ <span class=err>},</span>
+ <span class=err>{</span>
+ <span class=err>L&quot;skin_icon2&quot;,</span>
+ <span class=err>L&quot;PhotoShop&quot;,</span>
+ <span class=err>L&quot;强大的图片处理工具&quot;,</span>
+ <span class=err>9.0f,</span>
+ <span class=err>150*(1&lt;&lt;20),</span>
+ <span class=err>L&quot;2015-8-5&quot;,</span>
+ <span class=err>L&quot;今天&quot;</span>
+ <span class=err>},</span>
+ <span class=err>{</span>
+ <span class=err>L&quot;skin_icon3&quot;,</span>
+ <span class=err>L&quot;QQ7.0&quot;,</span>
+ <span class=err>L&quot;腾讯公司出品的即时聊天工具&quot;,</span>
+ <span class=err>8.0f,</span>
+ <span class=err>40*(1&lt;&lt;20),</span>
+ <span class=err>L&quot;2015-8-5&quot;,</span>
+ <span class=err>L&quot;今天&quot;</span>
+ <span class=err>},</span>
+ <span class=err>{</span>
+ <span class=err>L&quot;skin_icon4&quot;,</span>
+ <span class=err>L&quot;Visual</span> <span class=err>Studio</span> <span class=err>2008&quot;,</span>
+ <span class=err>L&quot;Microsoft</span> <span class=err>公司的程序开发套件&quot;,</span>
+ <span class=err>9.0f,</span>
+ <span class=err>40*(1&lt;&lt;20),</span>
+ <span class=err>L&quot;2015-8-5&quot;,</span>
+ <span class=err>L&quot;今天&quot;</span>
+ <span class=err>},</span>
+ <span class=err>{</span>
+ <span class=err>L&quot;skin_icon5&quot;,</span>
+ <span class=err>L&quot;YY8&quot;,</span>
+<span class=err>L&quot;YY</span> <span class=err>语音&quot;,</span>
+ <span class=err>9.0f,</span>
+ <span class=err>20*(1&lt;&lt;20),</span>
+ <span class=err>L&quot;2015-8-5&quot;,</span>
+ <span class=err>L&quot;今天&quot;</span>
+ <span class=err>},</span>
+ <span class=err>{</span>
+ <span class=err>L&quot;skin_icon6&quot;,</span>
+ <span class=err>L&quot;火狐浏览器&quot;,</span>
+ <span class=err>L&quot;速度最快的浏览器&quot;,</span>
+ <span class=err>8.5f,</span>
+ <span class=err>35*(1&lt;&lt;20),</span>
+ <span class=err>L&quot;2015-8-5&quot;,</span>
+ <span class=err>L&quot;今天&quot;</span>
+ <span class=err>},</span>
+ <span class=err>{</span>
+ <span class=err>L&quot;skin_icon7&quot;,</span>
+ <span class=err>L&quot;迅雷&quot;,</span>
+ <span class=err>L&quot;迅雷下载软件&quot;,</span>
+ <span class=err>7.3f,</span>
+ <span class=err>17*(1&lt;&lt;20),</span>
+ <span class=err>L&quot;2015-8-5&quot;,</span>
+ <span class=err>L&quot;今天&quot;</span>
+ <span class=err>}</span>
+<span class=err>};</span>
+</code></pre></div> <p>注意 CTestMcAdapterFix::getView 虚函数，上面提到的 template 会通过该函数的参数 pugi::xml_node xmlTemplate 传递过来。 在 getView 中，首先需要判断表项容器的子窗口是不是已经被初始化过，如果没有就执行 InitFromXml 如下：</p> <div class=highlight><pre><span></span><code><span class=k>if</span><span class=p>(</span><span class=n>pItem</span><span class=o>-&gt;</span><span class=n>GetChildrenCount</span><span class=p>()</span><span class=o>==</span><span class=mi>0</span><span class=p>)</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=n>pItem</span><span class=o>-&gt;</span><span class=n>InitFromXml</span><span class=p>(</span><span class=n>xmlTemplate</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=p>}</span><span class=w></span>
+</code></pre></div> <p>在子窗口初始化完成后，还需要从数据表中获取对应项的数据填充到控件中显示：</p> <div class=highlight><pre><span></span><code><span class=kt>int</span><span class=w> </span><span class=n>dataSize</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mi>7</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=n>SOFTINFO</span><span class=w> </span><span class=o>*</span><span class=n>psi</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>s_info</span><span class=o>+</span><span class=n>position</span><span class=o>%</span><span class=n>dataSize</span><span class=p>;</span><span class=w></span>
+
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;img_icon&quot;</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>SetAttribute</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;skin&quot;</span><span class=p>,</span><span class=n>psi</span><span class=o>-&gt;</span><span class=n>pszSkinName</span><span class=p>);</span><span class=w></span>
+
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;txt_name&quot;</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>SetWindowText</span><span class=p>(</span><span class=n>S_CW2T</span><span class=p>(</span><span class=n>psi</span><span class=o>-&gt;</span><span class=n>pszName</span><span class=p>));</span><span class=w></span>
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;txt_desc&quot;</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>SetWindowText</span><span class=p>(</span><span class=n>S_CW2T</span><span class=p>(</span><span class=n>psi</span><span class=o>-&gt;</span><span class=n>pszDesc</span><span class=p>));</span><span class=w></span>
+
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;txt_score&quot;</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>SetWindowText</span><span class=p>(</span><span class=n>SStringT</span><span class=p>().</span><span class=n>Format</span><span class=p>(</span><span class=n>_T</span><span class=p>(</span><span class=s>&quot;%1</span>
+<span class=mf>.2f</span><span class=w> </span><span class=err>分</span><span class=s>&quot;),psi-&gt;fScore));</span>
+
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;txt_installtime&quot;</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>SetWindowText</span><span class=p>(</span><span class=n>S_CW2T</span><span class=p>(</span><span class=n>psi</span><span class=o>-&gt;</span><span class=n>pszIns</span><span class=w></span>
+<span class=n>tallTime</span><span class=p>));</span><span class=w></span>
+
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;txt_usetime&quot;</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>SetWindowText</span><span class=p>(</span><span class=n>S_CW2T</span><span class=p>(</span><span class=n>psi</span><span class=o>-&gt;</span><span class=n>pszUseTime</span><span class=w></span>
+<span class=p>));</span><span class=w></span>
+
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;txt_size&quot;</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>SetWindowText</span><span class=p>(</span><span class=n>getSizeText</span><span class=p>(</span><span class=n>psi</span><span class=o>-&gt;</span><span class=n>dwSize</span><span class=p>))</span><span class=w></span>
+<span class=p>;</span><span class=w></span>
+
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName2</span><span class=o>&lt;</span><span class=n>SRatingBar</span><span class=o>&gt;</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;rating_score&quot;</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>SetValue</span><span class=p>(</span><span class=n>psi</span><span class=o>-&gt;</span><span class=n>fScore</span><span class=o>/</span><span class=mi>2</span><span class=w></span>
+<span class=p>);</span><span class=w></span>
+
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;txt_index&quot;</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>SetWindowText</span><span class=p>(</span><span class=n>SStringT</span><span class=p>().</span><span class=n>Format</span><span class=p>(</span><span class=n>_T</span><span class=p>(</span><span class=s>&quot;</span>
+<span class=err>第</span><span class=o>%</span><span class=n>d</span><span class=w> </span><span class=err>行</span><span class=s>&quot;),position));</span>
+</code></pre></div> <p>和主面板上的控件响应不同，要响应表项中控件的事件，没有事件映射表可以使用，可能 在 IMcAdapter 的实现中使用控件的 GetEventSet()-&gt;subscribeEvent 方法来响应：</p> <div class=highlight><pre><span></span><code><span class=n>SButton</span><span class=w> </span><span class=o>*</span><span class=n>pBtnUninstall</span><span class=w> </span><span class=o>=</span><span class=w></span>
+<span class=n>pItem</span><span class=o>-&gt;</span><span class=n>FindChildByName2</span><span class=o>&lt;</span><span class=n>SButton</span><span class=o>&gt;</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;btn_uninstall&quot;</span><span class=p>);</span><span class=w></span>
+<span class=w> </span><span class=n>pBtnUninstall</span><span class=o>-&gt;</span><span class=n>SetUserData</span><span class=p>(</span><span class=n>position</span><span class=p>);</span><span class=w></span>
+
+<span class=n>pBtnUninstall</span><span class=o>-&gt;</span><span class=n>GetEventSet</span><span class=p>()</span><span class=o>-&gt;</span><span class=n>subscribeEvent</span><span class=p>(</span><span class=n>EVT_CMD</span><span class=p>,</span><span class=n>Subscriber</span><span class=p>(</span><span class=o>&amp;</span><span class=n>CTestMcAdap</span><span class=w></span>
+<span class=n>terFix</span><span class=o>::</span><span class=n>OnButtonClick</span><span class=p>,</span><span class=k>this</span><span class=p>));</span><span class=w></span>
+</code></pre></div> <p>除了 getView 这个方法外，相对于 IAdapter，IMcAdapter 还需要实现另外两个非常重 要的方法：</p> <div class=highlight><pre><span></span><code><span class=n>interface</span><span class=w> </span><span class=nl>IMcAdapter</span> <span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>IAdapter</span><span class=w></span>
+<span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w> </span><span class=c1>//获取列名</span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=n>SStringW</span><span class=w> </span><span class=nf>GetColumnName</span><span class=p>(</span><span class=kt>int</span><span class=w> </span><span class=n>iCol</span><span class=p>)</span><span class=w> </span><span class=k>const</span><span class=w> </span><span class=n>PURE</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=c1>//排序接口</span>
+<span class=w> </span><span class=c1>// int iCol:排序列</span>
+<span class=w> </span><span class=c1>// SHDSORTFLAG * stFlags [in, out]:当前列排序标志</span>
+<span class=w> </span><span class=c1>// int nCols:总列数,stFlags 数组长度</span>
+<span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=kt>bool</span><span class=w> </span><span class=nf>OnSort</span><span class=p>(</span><span class=kt>int</span><span class=w> </span><span class=n>iCol</span><span class=p>,</span><span class=n>SHDSORTFLAG</span><span class=w> </span><span class=o>*</span><span class=w> </span><span class=n>stFlags</span><span class=p>,</span><span class=kt>int</span><span class=w> </span><span class=n>nCols</span><span class=p>)</span><span class=w> </span><span class=n>PURE</span><span class=p>;</span><span class=w></span>
+<span class=w> </span><span class=p>};</span><span class=w></span>
+</code></pre></div> <p>实现 GetColumnName 方法来获取每一列对应的子窗口名称，SMcListView 通过它来确 实 template 中的子窗口哪一个应该显示在什么位置，返回在 template 中定义的子节点的 name 即可。 实现 OnSort 来处理表头点击事件，以确实如何对数据排序。 至此，这个超级列表控件的使用就完成了。</p> </article> </div> </div> </main> <footer class=md-footer> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-copyright> <div class=md-copyright__highlight> Copyright &copy; 2016 - 2021 SoUI Team </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script> <script src=../../assets/javascripts/bundle.e1a181d9.min.js></script> <script src=https://cdnjs.loli.net/ajax/libs/pangu/3.3.0/pangu.min.js></script> <script src=../../static/js/extra.js></script> <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script> </body> </html>
