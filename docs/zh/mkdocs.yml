@@ -2,16 +2,16 @@ site_name: SoUI3官方文档
 site_description: C++ 快速设计界面库
 site_author: SoUI Team
 site_url: https://X.org/
-repo_name: 2926295173/soui3-docs
-repo_url: https://github.com/2926295173/soui3-docs
+repo_name: 2926295173/SoUIDocs
+repo_url: https://github.com/2926295173/SoUIDocs
 edit_uri: blob/main/docs/zh/docs/
-copyright: Copyright &copy; 2016 - 2021 SoUI Team
+copyright: Copyright &copy; 2010 - 2021 SoUI Team
 theme:
   name: material
   language: zh
   palette:
     primary: white
-    accent: red
+    accent: blue
     scheme: preference
   icon:
     repo: fontawesome/brands/github-alt
@@ -34,95 +34,95 @@ nav:
   - index.md
   - discussion.md
 - 概述:
-  - Overview\10.md
-  - Overview\11.md
-  - Overview\12.md
-  - Overview\13.md
-  - Overview\14.md
+  - Overview/10.md
+  - Overview/11.md
+  - Overview/12.md
+  - Overview/13.md
+  - Overview/14.md
 - 编译:
-  - BuildSoUI\build.md
+  - BuildSoUI/build.md
  # - 编码分析:
   #  - misc/encode/communication.md
   #- misc/prefix.md
  # - 图片分析:
   #  - misc/picture/introduction.md
 - 创建:
-  - Create\31.md
-  - Create\32.md
-  - Create\33.md
-  - Create\34.md
+  - Create/31.md
+  - Create/32.md
+  - Create/33.md
+  - Create/34.md
 
 - 开发:
-  - Development\0.md
-  - Development\1.md
-  - Development\2.md
-  - Development\3.md
-  - Development\4.md
-  - Development\5.md
-  - Development\6.md
-  - Development\7.md
-  - Development\8.md
-  - Development\9.md
-  - Development\10.md
-  - Development\11.md
-  - Development\12.md
-  - Development\13.md
-  - Development\14.md
-  - Development\15.md
-  - Development\16.md
-  - Development\17.md
-  - Development\18.md
-  - Development\19.md
-  - Development\20.md
-  - Development\21.md
-  - Development\22.md
-  - Development\23.md
-  - Development\24.md
-  - Development\25.md
-  - Development\26.md
+  - Development/0.md
+  - Development/1.md
+  - Development/2.md
+  - Development/3.md
+  - Development/4.md
+  - Development/5.md
+  - Development/6.md
+  - Development/7.md
+  - Development/8.md
+  - Development/9.md
+  - Development/10.md
+  - Development/11.md
+  - Development/12.md
+  - Development/13.md
+  - Development/14.md
+  - Development/15.md
+  - Development/16.md
+  - Development/17.md
+  - Development/18.md
+  - Development/19.md
+  - Development/20.md
+  - Development/21.md
+  - Development/22.md
+  - Development/23.md
+  - Development/24.md
+  - Development/25.md
+  - Development/26.md
 
 - 控件:
-  - Control\Summary.md
-  - Control\51.md
-  - Control\52.md
-  - Control\53.md
-  - Control\54.md
-  - Control\55.md
-  - Control\56.md
-  - Control\57.md
-  - Control\58.md
-  - Control\59.md
-  - Control\510.md
-  - Control\511.md
-  - Control\512.md
-  - Control\513.md
-  - Control\514.md
-  - Control\515.md
-  - Control\516.md
-  - Control\517.md
-  - Control\518.md
-  - Control\519.md
-  - Control\520.md
-  - Control\521.md
-  - Control\522.md
-  - Control\523.md
-  - Control\524.md
-  - Control\525.md
-  - Control\526.md
-  - Control\527.md
-  - Control\528.md
-  - Control\529.md
-  - Control\530.md
-  - Control\531.md
+  - Control/Summary.md
+  - Control/51.md
+  - Control/52.md
+  - Control/53.md
+  - Control/54.md
+  - Control/55.md
+  - Control/56.md
+  - Control/57.md
+  - Control/58.md
+  - Control/59.md
+  - Control/510.md
+  - Control/511.md
+  - Control/512.md
+  - Control/513.md
+  - Control/514.md
+  - Control/515.md
+  - Control/516.md
+  - Control/517.md
+  - Control/518.md
+  - Control/519.md
+  - Control/520.md
+  - Control/521.md
+  - Control/522.md
+  - Control/523.md
+  - Control/524.md
+  - Control/525.md
+  - Control/526.md
+  - Control/527.md
+  - Control/528.md
+  - Control/529.md
+  - Control/530.md
+  - Control/531.md
 - 提问:
-  - Ask\Summary.md
-  - Ask\1.md
-  - Ask\2.md
-  - Ask\3.md
+  - Ask/Summary.md
+  - Ask/1.md
+  - Ask/2.md
+  - Ask/3.md
 - 其他:
-  - Others\1.md
-  - Others\2.md
-  - Others\3.md
+  - Others/1.md
+  - Others/2.md
+  - Others/3.md
 - 更新:
   - updatelog.md
 markdown_extensions:
