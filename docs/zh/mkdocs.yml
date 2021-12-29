@@ -33,6 +33,7 @@ nav:
 - Start:
   - index.md
   - discussion.md
+  - theme.md
 - 概述:
   - Overview/10.md
   - Overview/11.md
