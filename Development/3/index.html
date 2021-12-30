@@ -131,7 +131,7 @@
 <span class=nt>&lt;/resource&gt;</span>
 </code></pre></div> <p>不管是系统资源还是用户资源都由资源管理模块管理。 实际上这两种资源可以合并到一个资源包中交给系统管理。有心人可能注意到了项目中使 用的系统资源使用的是一个资源 DLL，并且没有 uires.idx 文件。正是因为使用了资源 DLL 这一形式，才可以不提供 uires.idx 文件，因为 PE 资源本身已经有了分类命名（每一个资 源都在一个类型下）。 DEMO 中使用系统资源和用户资源</p> <div class=highlight><pre><span></span><code><span class=n>SApplication</span><span class=w> </span><span class=o>*</span><span class=n>theApp</span><span class=o>=</span><span class=k>new</span><span class=w> </span><span class=n>SApplication</span><span class=p>(</span><span class=n>pRenderFactory</span><span class=p>,</span><span class=n>hInstance</span><span class=p>);</span><span class=w></span>
 <span class=w> </span><span class=c1>//定义一人个资源提供对象,SOUI 系统中实现了 3 种资源加载方式，分别是从文件加载，从</span>
-<span class=n>EXE</span><span class=w> </span><span class=err>的资源加载及从</span><span class=w> </span><span class=n>ZIP</span><span class=w> </span><span class=err>压缩包加载</span><span class=w></span>
+<span class=n>EXE</span><span class=w> </span><span class=n>的资源加载及从</span><span class=w> </span><span class=n>ZIP</span><span class=w> </span><span class=n>压缩包加载</span><span class=w></span>
 <span class=w> </span><span class=n>CAutoRefPtr</span><span class=o>&lt;</span><span class=n>IResProvider</span><span class=o>&gt;</span><span class=w> </span><span class=n>pResProvider</span><span class=p>;</span><span class=w></span>
 <span class=cp>#if (RES_TYPE == 0)</span><span class=c1>//从文件加载</span>
 <span class=w> </span><span class=n>CreateResProvider</span><span class=p>(</span><span class=n>RES_FILE</span><span class=p>,(</span><span class=n>IObjRef</span><span class=o>**</span><span class=p>)</span><span class=o>&amp;</span><span class=n>pResProvider</span><span class=p>);</span><span class=w></span>

@@ -8,12 +8,12 @@
 <span class=w> </span><span class=n>SOUI_MSG_MAP_END</span><span class=p>()</span><span class=w></span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=err>上面是一个</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>控件中处理消息映射的映射表，除了</span><span class=w> </span><span class=n>SOUI_MSG_MAP_BEGIN</span><span class=o>/</span><span class=n>END</span><span class=p>()</span><span class=w></span>
-<span class=err>和</span><span class=w> </span><span class=n>WTL</span><span class=w> </span><span class=err>有点区别外，中间的宏基本是一样的。不同在于</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>中</span><span class=w> </span><span class=n>WM_PAINT</span><span class=w> </span><span class=err>消息的参数</span><span class=w></span>
-<span class=err>不是</span><span class=w> </span><span class=n>HDC</span><span class=err>，而且</span><span class=w> </span><span class=n>IRenderTarget</span><span class=err>，所以使用</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>扩展的映射宏：</span><span class=n>MSG_WM_PAINT_EX</span><span class=w></span>
-<span class=err>来处理。</span><span class=w></span>
-<span class=mi>2</span><span class=err>、在</span><span class=w> </span><span class=n>CSimpleWnd</span><span class=w> </span><span class=err>的派生类（包括</span><span class=w> </span><span class=n>SHostWnd</span><span class=p>,</span><span class=w> </span><span class=n>SHostDialog</span><span class=err>）中直接使用</span><span class=w> </span><span class=n>WTL</span><span class=w> </span><span class=err>的消</span><span class=w></span>
-<span class=err>息映射宏处理真窗口消息：</span><span class=w></span>
+<span class=w> </span><span class=n>上面是一个</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>控件中处理消息映射的映射表</span><span class=err>，</span><span class=n>除了</span><span class=w> </span><span class=n>SOUI_MSG_MAP_BEGIN</span><span class=o>/</span><span class=n>END</span><span class=p>()</span><span class=w></span>
+<span class=n>和</span><span class=w> </span><span class=n>WTL</span><span class=w> </span><span class=n>有点区别外</span><span class=err>，</span><span class=n>中间的宏基本是一样的</span><span class=err>。</span><span class=n>不同在于</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>中</span><span class=w> </span><span class=n>WM_PAINT</span><span class=w> </span><span class=n>消息的参数</span><span class=w></span>
+<span class=n>不是</span><span class=w> </span><span class=n>HDC</span><span class=err>，</span><span class=n>而且</span><span class=w> </span><span class=n>IRenderTarget</span><span class=err>，</span><span class=n>所以使用</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>扩展的映射宏</span><span class=err>：</span><span class=n>MSG_WM_PAINT_EX</span><span class=w></span>
+<span class=n>来处理</span><span class=err>。</span><span class=w></span>
+<span class=mi>2</span><span class=err>、</span><span class=n>在</span><span class=w> </span><span class=n>CSimpleWnd</span><span class=w> </span><span class=n>的派生类</span><span class=err>（</span><span class=n>包括</span><span class=w> </span><span class=n>SHostWnd</span><span class=p>,</span><span class=w> </span><span class=n>SHostDialog</span><span class=err>）</span><span class=n>中直接使用</span><span class=w> </span><span class=n>WTL</span><span class=w> </span><span class=n>的消</span><span class=w></span>
+<span class=n>息映射宏处理真窗口消息</span><span class=err>：</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
 <span class=c1>//HOST 消息及响应函数映射表</span>

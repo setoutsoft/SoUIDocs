@@ -3,7 +3,7 @@
 <span class=w> </span><span class=k>if</span><span class=p>(</span><span class=n>wkeLoader</span><span class=p>.</span><span class=n>Init</span><span class=p>(</span><span class=n>_T</span><span class=p>(</span><span class=s>&quot;wke.dll&quot;</span><span class=p>)))</span><span class=w> </span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SWkeWebkit</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册</span>
-<span class=n>WKE</span><span class=w> </span><span class=err>浏览器</span><span class=w></span>
+<span class=n>WKE</span><span class=w> </span><span class=n>浏览器</span><span class=w></span>
 <span class=w> </span><span class=p>}</span><span class=w></span>
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SGifPlayer</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册</span>
 <span class=n>GIFPlayer</span><span class=w></span>
@@ -11,11 +11,11 @@
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterSkinFactory</span><span class=p>(</span><span class=n>TplSkinFactory</span><span class=o>&lt;</span><span class=n>SSkinAPNG</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册</span>
 <span class=n>SSkinAPNG</span><span class=w></span>
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterSkinFactory</span><span class=p>(</span><span class=n>TplSkinFactory</span><span class=o>&lt;</span><span class=n>SSkinVScrollbar</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册纵</span>
-<span class=err>向滚动条皮肤</span><span class=w></span>
+<span class=n>向滚动条皮肤</span><span class=w></span>
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SIPAddressCtrl</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册</span>
-<span class=n>IP</span><span class=w> </span><span class=err>控件</span><span class=w></span>
+<span class=n>IP</span><span class=w> </span><span class=n>控件</span><span class=w></span>
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SPropertyGrid</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册属</span>
-<span class=err>性表控件</span><span class=w></span>
+<span class=n>性表控件</span><span class=w></span>
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SChromeTabCtrl</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册</span>
 <span class=n>ChromeTabCtrl</span><span class=w></span>
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SIECtrl</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册 IECtrl</span>
@@ -27,15 +27,15 @@
 <span class=w> </span><span class=p>{</span><span class=w></span>
 
 <span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SUiAnimationWnd</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册动画控</span>
-<span class=err>件</span><span class=w></span>
+<span class=n>件</span><span class=w></span>
 <span class=w> </span><span class=p>}</span><span class=w></span>
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SFlyWnd</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册飞行动画</span>
-<span class=err>控件</span><span class=w></span>
+<span class=n>控件</span><span class=w></span>
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SFadeFrame</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册渐显</span>
-<span class=err>隐动画控件</span><span class=w></span>
+<span class=n>隐动画控件</span><span class=w></span>
 <span class=w> </span><span class=n>theApp</span><span class=o>-&gt;</span><span class=n>RegisterWndFactory</span><span class=p>(</span><span class=n>TplSWindowFactory</span><span class=o>&lt;</span><span class=n>SRadioBox2</span><span class=o>&gt;</span><span class=p>());</span><span class=c1>//注册渐显</span>
-<span class=err>隐动画控件</span><span class=w></span>
-</code></pre></div> <p>上面代码中即有新皮肤对象的注册也有窗口控件的注册，这种注册控件方式看起来有点怪 异，但使用起来也还算是简单，只需要一行代码（实际上是从著名的游戏 GUI CEGUI 借 鉴过来的）。 以注册窗口控件为例，下面我来解释一下为什么会有这样一种控件注册方式。 先看看 TplSWindowFactory 模板类的实现：</p> <div class=highlight><pre><span></span><code><span class=k>class</span> <span class=nc>SWindowFactory</span><span class=w></span>
+<span class=n>隐动画控件</span><span class=w></span>
+</code></pre></div> <p>上面代码中即有新皮肤对象的注册也有窗口控件的注册，这种注册控件方式看起来有点怪 异，但使用起来也还算是简单，只需要一行代码（实际上是从著名的游戏 GUI CEGUI 借 鉴过来的）。 以注册窗口控件为例，下面我来解释一下为什么会有这样一种控件注册方式。 先看看 TplSWindowFactory 模板类的实现：</p> <div class=highlight><pre><span></span><code><span class=k>class</span><span class=w> </span><span class=nc>SWindowFactory</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
 <span class=k>virtual</span><span class=w> </span><span class=o>~</span><span class=n>SWindowFactory</span><span class=p>()</span><span class=w> </span><span class=p>{}</span><span class=w></span>
@@ -44,8 +44,8 @@
 <span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=k>const</span><span class=w> </span><span class=n>SStringW</span><span class=w> </span><span class=o>&amp;</span><span class=w> </span><span class=nf>getWindowType</span><span class=p>()</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=w></span>
 <span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=n>SWindowFactory</span><span class=o>*</span><span class=w> </span><span class=nf>Clone</span><span class=p>()</span><span class=w> </span><span class=k>const</span><span class=w> </span><span class=o>=</span><span class=mi>0</span><span class=p>;</span><span class=w></span>
 <span class=w> </span><span class=p>};</span><span class=w></span>
-<span class=w> </span><span class=k>template</span><span class=w> </span><span class=o>&lt;</span><span class=k>typename</span> <span class=nc>T</span><span class=o>&gt;</span><span class=w></span>
-<span class=w> </span><span class=k>class</span> <span class=nc>TplSWindowFactory</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SWindowFactory</span><span class=w></span>
+<span class=w> </span><span class=k>template</span><span class=w> </span><span class=o>&lt;</span><span class=k>typename</span><span class=w> </span><span class=nc>T</span><span class=o>&gt;</span><span class=w></span>
+<span class=w> </span><span class=k>class</span><span class=w> </span><span class=nc>TplSWindowFactory</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SWindowFactory</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=c1>//! Default constructor.</span>
@@ -71,38 +71,38 @@
 <span class=w> </span><span class=p>};</span><span class=w></span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=n>TplSWindowFactory</span><span class=w> </span><span class=err>从</span><span class=w> </span><span class=n>SWindowFactory</span><span class=w> </span><span class=err>派生，自动为模板参数中指定的类型生成一个</span><span class=w></span>
-<span class=n>SWindowFactory</span><span class=w> </span><span class=err>对象。</span><span class=w></span>
-<span class=n>SWindowFactory</span><span class=w> </span><span class=err>有什么用呢？</span><span class=n>SWindowFactory</span><span class=w> </span><span class=err>最核心的用途就在于它的方法：</span><span class=w></span>
+<span class=w> </span><span class=n>TplSWindowFactory</span><span class=w> </span><span class=n>从</span><span class=w> </span><span class=n>SWindowFactory</span><span class=w> </span><span class=n>派生</span><span class=err>，</span><span class=n>自动为模板参数中指定的类型生成一个</span><span class=w></span>
+<span class=n>SWindowFactory</span><span class=w> </span><span class=n>对象</span><span class=err>。</span><span class=w></span>
+<span class=n>SWindowFactory</span><span class=w> </span><span class=n>有什么用呢</span><span class=err>？</span><span class=n>SWindowFactory</span><span class=w> </span><span class=n>最核心的用途就在于它的方法</span><span class=err>：</span><span class=w></span>
 <span class=n>SWindow</span><span class=w> </span><span class=o>*</span><span class=n>SWindowFactory</span><span class=o>::</span><span class=n>NewWindow</span><span class=p>();</span><span class=w></span>
-<span class=err>该方法说来很简单，不过是根据不同的字符串从堆上分配一个</span><span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=err>对象，但是在</span><span class=w></span>
-<span class=n>C</span><span class=o>++</span><span class=err>中我们需要满足一条基本原则：内存在哪个模块中分配（从哪个模块的堆上分配）就</span><span class=w></span>
-<span class=err>必须被哪个模块释放。</span><span class=w></span>
-<span class=err>在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>中，通常情况下控件都是由</span><span class=w> </span><span class=n>SOUI</span><span class=p>.</span><span class=n>DLL</span><span class=w> </span><span class=err>这个模块来分配内存的，也就是说</span><span class=w></span>
-<span class=n>SWindow</span><span class=o>*</span><span class=w> </span><span class=n>SWindowFactory</span><span class=o>::</span><span class=n>NewWindow</span><span class=p>()</span><span class=err>只会在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>模块中调用。</span><span class=w></span>
-<span class=err>那么生成的对象在哪里释放呢？</span><span class=w></span>
-<span class=err>这就需要看一下</span><span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=err>或者</span><span class=w> </span><span class=n>SSkinObjBase</span><span class=w> </span><span class=err>这两个类的实现了。</span><span class=w></span>
+<span class=n>该方法说来很简单</span><span class=err>，</span><span class=n>不过是根据不同的字符串从堆上分配一个</span><span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=n>对象</span><span class=err>，</span><span class=n>但是在</span><span class=w></span>
+<span class=n>C</span><span class=o>++</span><span class=n>中我们需要满足一条基本原则</span><span class=err>：</span><span class=n>内存在哪个模块中分配</span><span class=err>（</span><span class=n>从哪个模块的堆上分配</span><span class=err>）</span><span class=n>就</span><span class=w></span>
+<span class=n>必须被哪个模块释放</span><span class=err>。</span><span class=w></span>
+<span class=n>在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>中</span><span class=err>，</span><span class=n>通常情况下控件都是由</span><span class=w> </span><span class=n>SOUI</span><span class=p>.</span><span class=n>DLL</span><span class=w> </span><span class=n>这个模块来分配内存的</span><span class=err>，</span><span class=n>也就是说</span><span class=w></span>
+<span class=n>SWindow</span><span class=o>*</span><span class=w> </span><span class=n>SWindowFactory</span><span class=o>::</span><span class=n>NewWindow</span><span class=p>()</span><span class=n>只会在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>模块中调用</span><span class=err>。</span><span class=w></span>
+<span class=n>那么生成的对象在哪里释放呢</span><span class=err>？</span><span class=w></span>
+<span class=n>这就需要看一下</span><span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=n>或者</span><span class=w> </span><span class=n>SSkinObjBase</span><span class=w> </span><span class=n>这两个类的实现了</span><span class=err>。</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
-<span class=k>class</span> <span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>SWindow</span> <span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SObject</span><span class=w></span>
+<span class=k>class</span><span class=w> </span><span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>SWindow</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SObject</span><span class=w></span>
 <span class=w> </span><span class=p>,</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SMsgHandleState</span><span class=w></span>
 <span class=w> </span><span class=p>,</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl2</span><span class=o>&lt;</span><span class=n>IObjRef</span><span class=p>,</span><span class=n>SWindow</span><span class=o>&gt;</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=n>SOUI_CLASS_NAME</span><span class=p>(</span><span class=n>SWindow</span><span class=p>,</span><span class=w> </span><span class=sa>L</span><span class=s>&quot;window&quot;</span><span class=p>)</span><span class=w></span>
 <span class=w> </span><span class=c1>//....</span>
 <span class=w> </span><span class=p>};</span><span class=w></span>
-<span class=w> </span><span class=k>class</span> <span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>SSkinObjBase</span> <span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=o>&lt;</span><span class=n>ISkinObj</span><span class=o>&gt;</span><span class=w></span>
+<span class=w> </span><span class=k>class</span><span class=w> </span><span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>SSkinObjBase</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=o>&lt;</span><span class=n>ISkinObj</span><span class=o>&gt;</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=c1>//......</span>
 <span class=w> </span><span class=p>};</span><span class=w></span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=err>和</span><span class=w> </span><span class=n>SSkinObjBase</span><span class=w> </span><span class=err>实际上都派生自</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=w> </span><span class=err>这个模板类。下面看一下这个</span><span class=w></span>
-<span class=err>类的实现</span><span class=o>:</span><span class=w></span>
+<span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=n>和</span><span class=w> </span><span class=n>SSkinObjBase</span><span class=w> </span><span class=n>实际上都派生自</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=w> </span><span class=n>这个模板类</span><span class=err>。</span><span class=n>下面看一下这个</span><span class=w></span>
+<span class=nl>类的实现</span><span class=p>:</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
-<span class=k>template</span><span class=o>&lt;</span><span class=k>class</span> <span class=nc>T</span><span class=o>&gt;</span><span class=w></span>
-<span class=k>class</span> <span class=nc>TObjRefImpl</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>T</span><span class=w></span>
+<span class=k>template</span><span class=o>&lt;</span><span class=k>class</span><span class=w> </span><span class=nc>T</span><span class=o>&gt;</span><span class=w></span>
+<span class=k>class</span><span class=w> </span><span class=nc>TObjRefImpl</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>T</span><span class=w></span>
 <span class=p>{</span><span class=w></span>
 <span class=k>public</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=n>TObjRefImpl</span><span class=p>()</span><span class=o>:</span><span class=n>m_cRef</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span><span class=w></span>
@@ -138,8 +138,8 @@
 <span class=k>protected</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=k>volatile</span><span class=w> </span><span class=n>LONG</span><span class=w> </span><span class=n>m_cRef</span><span class=p>;</span><span class=w></span>
 <span class=p>};</span><span class=w></span>
-<span class=k>template</span><span class=o>&lt;</span><span class=k>class</span> <span class=nc>T</span><span class=p>,</span><span class=k>class</span> <span class=nc>T2</span><span class=o>&gt;</span><span class=w></span>
-<span class=k>class</span> <span class=nc>TObjRefImpl2</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span><span class=w></span>
+<span class=k>template</span><span class=o>&lt;</span><span class=k>class</span><span class=w> </span><span class=nc>T</span><span class=p>,</span><span class=k>class</span><span class=w> </span><span class=nc>T2</span><span class=o>&gt;</span><span class=w></span>
+<span class=k>class</span><span class=w> </span><span class=nc>TObjRefImpl2</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span><span class=w></span>
 <span class=p>{</span><span class=w></span>
 <span class=k>public</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=n>OnFinalRelease</span><span class=p>()</span><span class=w></span>

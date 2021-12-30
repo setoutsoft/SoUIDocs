@@ -38,16 +38,16 @@ SStringW &amp; strValue, BOOL bLoading)
 <span class=w> </span><span class=n>SOUI_ATTRS_END</span><span class=p>()</span><span class=w></span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=n>SOUI_ATTRS_BEGIN</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=n>SOUI_ATTRS_END</span><span class=w> </span><span class=err>宏展开构成一个空的</span><span class=w> </span><span class=n>SetAttribute</span><span class=w> </span><span class=err>函数。</span><span class=w></span>
-<span class=n>ATTR_XXX</span><span class=w> </span><span class=err>则对不同类型的属性提供一种固定的处理方式，全部属性形成一个属性映射</span><span class=w></span>
-<span class=err>表。</span><span class=w></span>
-<span class=err>因此要查对象属性，首先就是查对象代码中对应的属性映射表，同时也别忘记去查对象的</span><span class=w></span>
-<span class=err>基类的属性映射表。</span><span class=w></span>
-<span class=err>有些对象（如</span><span class=w> </span><span class=n>Richedit</span><span class=p>)</span><span class=err>的属性可能在这个属性映射表里找不到，那又是为什么呢？</span><span class=w></span>
-<span class=err>注意</span><span class=w> </span><span class=n>SetAttribute</span><span class=w> </span><span class=err>最后调用了</span><span class=w> </span><span class=n>DefAttributeProc</span><span class=err>，使用属性映射表构造的属性处理函数</span><span class=w></span>
-<span class=err>也同样会调用</span><span class=w> </span><span class=n>DefAttributeProc</span><span class=err>。</span><span class=w></span>
-<span class=err>在</span><span class=w> </span><span class=n>DefAttributeProc</span><span class=w> </span><span class=err>中可以批量的按照自己的方式处理属性。下面看一下</span><span class=w></span>
-<span class=n>Richedit</span><span class=o>::</span><span class=n>DefAttributeProc</span><span class=w> </span><span class=err>的实现：</span><span class=w></span>
+<span class=w> </span><span class=n>SOUI_ATTRS_BEGIN</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=n>SOUI_ATTRS_END</span><span class=w> </span><span class=n>宏展开构成一个空的</span><span class=w> </span><span class=n>SetAttribute</span><span class=w> </span><span class=n>函数</span><span class=err>。</span><span class=w></span>
+<span class=n>ATTR_XXX</span><span class=w> </span><span class=n>则对不同类型的属性提供一种固定的处理方式</span><span class=err>，</span><span class=n>全部属性形成一个属性映射</span><span class=w></span>
+<span class=n>表</span><span class=err>。</span><span class=w></span>
+<span class=n>因此要查对象属性</span><span class=err>，</span><span class=n>首先就是查对象代码中对应的属性映射表</span><span class=err>，</span><span class=n>同时也别忘记去查对象的</span><span class=w></span>
+<span class=n>基类的属性映射表</span><span class=err>。</span><span class=w></span>
+<span class=n>有些对象</span><span class=err>（</span><span class=n>如</span><span class=w> </span><span class=n>Richedit</span><span class=p>)</span><span class=n>的属性可能在这个属性映射表里找不到</span><span class=err>，</span><span class=n>那又是为什么呢</span><span class=err>？</span><span class=w></span>
+<span class=n>注意</span><span class=w> </span><span class=n>SetAttribute</span><span class=w> </span><span class=n>最后调用了</span><span class=w> </span><span class=n>DefAttributeProc</span><span class=err>，</span><span class=n>使用属性映射表构造的属性处理函数</span><span class=w></span>
+<span class=n>也同样会调用</span><span class=w> </span><span class=n>DefAttributeProc</span><span class=err>。</span><span class=w></span>
+<span class=n>在</span><span class=w> </span><span class=n>DefAttributeProc</span><span class=w> </span><span class=n>中可以批量的按照自己的方式处理属性</span><span class=err>。</span><span class=n>下面看一下</span><span class=w></span>
+<span class=n>Richedit</span><span class=o>::</span><span class=n>DefAttributeProc</span><span class=w> </span><span class=n>的实现</span><span class=err>：</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
 <span class=n>HRESULT</span><span class=w> </span><span class=n>SRichEdit</span><span class=o>::</span><span class=n>DefAttributeProc</span><span class=p>(</span><span class=k>const</span><span class=w> </span><span class=n>SStringW</span><span class=w> </span><span class=o>&amp;</span><span class=w> </span><span class=n>strAttribName</span><span class=p>,</span><span class=k>const</span><span class=w></span>

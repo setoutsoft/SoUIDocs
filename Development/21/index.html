@@ -38,7 +38,7 @@
 <span class=cp> }</span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=err>下面是</span><span class=w> </span><span class=n>SoTool</span><span class=w> </span><span class=err>中的</span><span class=w> </span><span class=n>MainDlg</span><span class=w> </span><span class=err>中的事件处理：</span><span class=w></span>
+<span class=w> </span><span class=n>下面是</span><span class=w> </span><span class=n>SoTool</span><span class=w> </span><span class=n>中的</span><span class=w> </span><span class=n>MainDlg</span><span class=w> </span><span class=n>中的事件处理</span><span class=err>：</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
 <span class=c1>//soui 消息</span>
@@ -55,18 +55,18 @@
 <span class=w> </span><span class=n>EVENT_MAP_END</span><span class=p>()</span><span class=w></span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=err>上面代码中，</span><span class=n>EVENT_MAP_BEGIN</span><span class=p>()</span><span class=err>和</span><span class=w> </span><span class=n>EVENT_MAP_END</span><span class=p>()</span><span class=err>这两个宏构造出一个空的事件</span><span class=w></span>
-<span class=err>处理函数，该函数自动将未处理的事件交给基类的事件处理函数处理。</span><span class=w></span>
-<span class=err>如果基类中没有事件处理函数，显然这个事件映射表编译不能通过，此时</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>提供了另</span><span class=w></span>
-<span class=err>一个</span><span class=w> </span><span class=n>EVENT_MAP_BREAK</span><span class=p>()</span><span class=err>来代替。</span><span class=w></span>
-<span class=err>上面的事件分发表中，我使用</span><span class=w> </span><span class=n>CHAIN_EVENT_MAP_MEMBER</span><span class=w> </span><span class=err>宏将来自不同页面的控件</span><span class=w></span>
-<span class=err>事件传递到不同的事件处理对象中。</span><span class=w></span>
-<span class=err>下面代码是</span><span class=w> </span><span class=n>m_imgMergerHandler</span><span class=w> </span><span class=err>对象头文件。</span><span class=w></span>
+<span class=w> </span><span class=n>上面代码中</span><span class=err>，</span><span class=n>EVENT_MAP_BEGIN</span><span class=p>()</span><span class=n>和</span><span class=w> </span><span class=n>EVENT_MAP_END</span><span class=p>()</span><span class=n>这两个宏构造出一个空的事件</span><span class=w></span>
+<span class=n>处理函数</span><span class=err>，</span><span class=n>该函数自动将未处理的事件交给基类的事件处理函数处理</span><span class=err>。</span><span class=w></span>
+<span class=n>如果基类中没有事件处理函数</span><span class=err>，</span><span class=n>显然这个事件映射表编译不能通过</span><span class=err>，</span><span class=n>此时</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>提供了另</span><span class=w></span>
+<span class=n>一个</span><span class=w> </span><span class=n>EVENT_MAP_BREAK</span><span class=p>()</span><span class=n>来代替</span><span class=err>。</span><span class=w></span>
+<span class=n>上面的事件分发表中</span><span class=err>，</span><span class=n>我使用</span><span class=w> </span><span class=n>CHAIN_EVENT_MAP_MEMBER</span><span class=w> </span><span class=n>宏将来自不同页面的控件</span><span class=w></span>
+<span class=n>事件传递到不同的事件处理对象中</span><span class=err>。</span><span class=w></span>
+<span class=n>下面代码是</span><span class=w> </span><span class=n>m_imgMergerHandler</span><span class=w> </span><span class=n>对象头文件</span><span class=err>。</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
-<span class=k>class</span> <span class=nc>CImageMergerHandler</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>IFileDropHandler</span><span class=w></span>
+<span class=k>class</span><span class=w> </span><span class=nc>CImageMergerHandler</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>IFileDropHandler</span><span class=w></span>
 <span class=p>{</span><span class=w></span>
-<span class=k>friend</span><span class=w> </span><span class=k>class</span> <span class=nc>CMainDlg</span><span class=p>;</span><span class=w></span>
+<span class=k>friend</span><span class=w> </span><span class=k>class</span><span class=w> </span><span class=nc>CMainDlg</span><span class=p>;</span><span class=w></span>
 <span class=k>public</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=n>CImageMergerHandler</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span><span class=w></span>
 <span class=w> </span><span class=o>~</span><span class=n>CImageMergerHandler</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span><span class=w></span>

@@ -4,7 +4,7 @@
 <span class=cm> *</span>
 <span class=cm> * Describe </span>
 <span class=cm> */</span><span class=w></span>
-<span class=w> </span><span class=k>struct</span> <span class=nc>IRealWndHandler</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>IObjRef</span><span class=w></span>
+<span class=w> </span><span class=k>struct</span><span class=w> </span><span class=nc>IRealWndHandler</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>IObjRef</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=cm>/**</span>
 <span class=cm> * SRealWnd::OnRealWndCreate</span>
@@ -45,7 +45,7 @@
 <span class=cp>#include</span><span class=w> </span><span class=cpf>&lt;unknown/obj-ref-impl.hpp&gt;</span><span class=cp></span>
 <span class=k>namespace</span><span class=w> </span><span class=nn>SOUI</span><span class=w></span>
 <span class=p>{</span><span class=w></span>
-<span class=w> </span><span class=k>class</span> <span class=nc>CSouiRealWndHandler</span><span class=w> </span><span class=o>:</span><span class=k>public</span><span class=w></span>
+<span class=w> </span><span class=k>class</span><span class=w> </span><span class=nc>CSouiRealWndHandler</span><span class=w> </span><span class=o>:</span><span class=k>public</span><span class=w></span>
 <span class=n>TObjRefImpl2</span><span class=o>&lt;</span><span class=n>IRealWndHandler</span><span class=p>,</span><span class=n>CSouiRealWndHandler</span><span class=o>&gt;</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
@@ -103,14 +103,14 @@
 <span class=w> </span><span class=c1>//分配一个 MFC CButton 对象</span>
 <span class=w> </span><span class=n>CButton</span><span class=w> </span><span class=o>*</span><span class=n>pbtn</span><span class=o>=</span><span class=k>new</span><span class=w> </span><span class=n>CButton</span><span class=p>;</span><span class=w></span>
 <span class=w> </span><span class=c1>//创建 CButton 窗口,注意使用 pRealWnd-&gt;GetContainer()-&gt;GetHostHwnd()作</span>
-<span class=err>为</span><span class=w> </span><span class=n>CButton</span><span class=w> </span><span class=err>的父窗口</span><span class=w></span>
+<span class=n>为</span><span class=w> </span><span class=n>CButton</span><span class=w> </span><span class=n>的父窗口</span><span class=w></span>
 <span class=w> </span><span class=c1>//把 pRealWnd-&gt;GetID()作为真窗口的 ID</span>
 
 <span class=n>pbtn</span><span class=o>-&gt;</span><span class=n>Create</span><span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>m_strWindowName</span><span class=p>,</span><span class=n>WS_CHILD</span><span class=o>|</span><span class=n>WS_VISIBLE</span><span class=o>|</span><span class=n>BS_PUSHBUTTON</span><span class=p>,</span><span class=o>::</span><span class=n>CRect</span><span class=w></span>
 <span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>),</span><span class=n>CWnd</span><span class=o>::</span><span class=n>FromHandle</span><span class=p>(</span><span class=n>pRealWnd</span><span class=o>-&gt;</span><span class=n>GetContainer</span><span class=p>()</span><span class=o>-&gt;</span><span class=n>GetHostHwnd</span><span class=p>()),</span><span class=n>pRealWnd</span><span class=w></span>
 <span class=o>-&gt;</span><span class=n>GetID</span><span class=p>());</span><span class=w></span>
 <span class=w> </span><span class=c1>//把 pbtn 的指针放到 SRealWnd 的 Data 中保存，以便在窗口 destroy 时释放 pbtn 对</span>
-<span class=err>象。</span><span class=w></span>
+<span class=n>象</span><span class=err>。</span><span class=w></span>
 <span class=w> </span><span class=n>pRealWnd</span><span class=o>-&gt;</span><span class=n>SetData</span><span class=p>(</span><span class=n>pbtn</span><span class=p>);</span><span class=w></span>
 <span class=w> </span><span class=c1>//返回成功创建后的窗口句柄</span>
 <span class=w> </span><span class=k>return</span><span class=w> </span><span class=n>pbtn</span><span class=o>-&gt;</span><span class=n>m_hWnd</span><span class=p>;</span><span class=w></span>
@@ -159,7 +159,7 @@
  <span class=nt>&lt;/root&gt;</span>
 <span class=nt>&lt;/SOUI&gt;</span>
 </code></pre></div> <p>在 XML 中，我们使用了一个 realwnd 的标签，该标签有一个重要的属性：wndclass， IRealWndHandler 通过该属性来判断应该创建一个什么样的真窗口。 运行效果： 上面红框中的按钮即为使用 realwnd 标签创建的 MFC Button。 真窗口的消息响应： 由于真窗口是 SOUI 主窗口的子窗口，因此真窗口的消息可以在 SOUI 主窗口的消息映射 表中处理（注意：这里不是 SOUI 控件的事件映射表）。 如：</p> <div class=highlight><pre><span></span><code><span class=cp>#pragma once</span>
-<span class=k>class</span> <span class=nc>CRealWndDlg</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SOUI</span><span class=o>::</span><span class=n>SHostDialog</span><span class=w></span>
+<span class=k>class</span><span class=w> </span><span class=nc>CRealWndDlg</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SOUI</span><span class=o>::</span><span class=n>SHostDialog</span><span class=w></span>
 <span class=p>{</span><span class=w></span>
 <span class=k>public</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=n>CRealWndDlg</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span><span class=w></span>

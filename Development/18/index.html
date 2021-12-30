@@ -25,7 +25,7 @@
 <span class=w> </span><span class=n>SASSERT</span><span class=p>(</span><span class=n>FALSE</span><span class=p>);</span><span class=w></span>
 <span class=w> </span><span class=p>}</span><span class=w></span>
 <span class=w> </span><span class=p>}</span><span class=k>else</span><span class=w> </span><span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=n>xmlChild</span><span class=p>.</span><span class=n>get_userdata</span><span class=p>())</span><span class=c1>//通过 userdata 来标记一个节点是否可以</span>
-<span class=err>忽略</span><span class=w></span>
+<span class=n>忽略</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=o>*</span><span class=n>pChild</span><span class=w> </span><span class=o>=</span><span class=w></span>
 <span class=n>SApplication</span><span class=o>::</span><span class=n>getSingleton</span><span class=p>().</span><span class=n>CreateWindowByName</span><span class=p>(</span><span class=n>xmlChild</span><span class=p>.</span><span class=n>name</span><span class=p>());</span><span class=w></span>
@@ -40,13 +40,13 @@
 <span class=w> </span><span class=p>}</span><span class=w></span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=err>这个函数的功能是为</span><span class=w> </span><span class=k>this</span><span class=w> </span><span class=err>从</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=err>中创建它的子窗口，主要注意代码中红色部分。</span><span class=w></span>
-<span class=err>其中第</span><span class=w> </span><span class=mi>30</span><span class=w> </span><span class=err>行是从</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>的窗口类厂根据</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=err>结点名</span><span class=w> </span><span class=k>new</span><span class=w> </span><span class=err>出一个窗口对象。</span><span class=w></span>
-<span class=err>第</span><span class=w> </span><span class=mi>33</span><span class=w> </span><span class=err>行把创建出来的窗口插入到</span><span class=w> </span><span class=k>this</span><span class=w> </span><span class=err>的子窗口链表里去。</span><span class=w></span>
-<span class=err>而第</span><span class=w> </span><span class=mi>34</span><span class=w> </span><span class=err>行的功能是从子窗口对应的</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=err>结点初始化子窗口属性。</span><span class=w></span>
-<span class=err>很多网友以为只要完成上面步骤就应该可以显示窗口了，但结果确大失所望。</span><span class=w></span>
-<span class=n>SOUI</span><span class=w> </span><span class=err>一个重要特点就是能够自动布局，这个过程的秘密就在于</span><span class=w> </span><span class=n>SWindow</span><span class=o>::</span><span class=n>OnRelayout</span><span class=w></span>
-<span class=err>方法。</span><span class=w></span>
+<span class=w> </span><span class=n>这个函数的功能是为</span><span class=w> </span><span class=k>this</span><span class=w> </span><span class=n>从</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=n>中创建它的子窗口</span><span class=err>，</span><span class=n>主要注意代码中红色部分</span><span class=err>。</span><span class=w></span>
+<span class=n>其中第</span><span class=w> </span><span class=mi>30</span><span class=w> </span><span class=n>行是从</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>的窗口类厂根据</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=n>结点名</span><span class=w> </span><span class=k>new</span><span class=w> </span><span class=n>出一个窗口对象</span><span class=err>。</span><span class=w></span>
+<span class=n>第</span><span class=w> </span><span class=mi>33</span><span class=w> </span><span class=n>行把创建出来的窗口插入到</span><span class=w> </span><span class=k>this</span><span class=w> </span><span class=n>的子窗口链表里去</span><span class=err>。</span><span class=w></span>
+<span class=n>而第</span><span class=w> </span><span class=mi>34</span><span class=w> </span><span class=n>行的功能是从子窗口对应的</span><span class=w> </span><span class=n>XML</span><span class=w> </span><span class=n>结点初始化子窗口属性</span><span class=err>。</span><span class=w></span>
+<span class=n>很多网友以为只要完成上面步骤就应该可以显示窗口了</span><span class=err>，</span><span class=n>但结果确大失所望</span><span class=err>。</span><span class=w></span>
+<span class=n>SOUI</span><span class=w> </span><span class=n>一个重要特点就是能够自动布局</span><span class=err>，</span><span class=n>这个过程的秘密就在于</span><span class=w> </span><span class=n>SWindow</span><span class=o>::</span><span class=n>OnRelayout</span><span class=w></span>
+<span class=n>方法</span><span class=err>。</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
 <span class=kt>void</span><span class=w> </span><span class=n>SWindow</span><span class=o>::</span><span class=n>OnRelayout</span><span class=p>(</span><span class=k>const</span><span class=w> </span><span class=n>CRect</span><span class=w> </span><span class=o>&amp;</span><span class=n>rcOld</span><span class=p>,</span><span class=w> </span><span class=k>const</span><span class=w> </span><span class=n>CRect</span><span class=w> </span><span class=o>&amp;</span><span class=w> </span><span class=n>rcNew</span><span class=p>)</span><span class=w></span>
@@ -69,33 +69,33 @@
 <span class=w> </span><span class=p>}</span><span class=w></span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=err>当</span><span class=w> </span><span class=k>this</span><span class=w> </span><span class=err>窗口位置改变后都会进入</span><span class=w> </span><span class=n>OnRelayout</span><span class=w> </span><span class=err>方法。</span><span class=w></span>
-<span class=err>注意函数第</span><span class=w> </span><span class=mi>15</span><span class=w> </span><span class=err>行：</span><span class=n>UpdateChildrenPosition</span><span class=p>()</span><span class=err>；这个调用的功能就是将</span><span class=w> </span><span class=k>this</span><span class=w> </span><span class=err>的所有子控</span><span class=w></span>
-<span class=err>件按照控件中定义的布局属性来自动布局。</span><span class=w></span>
-<span class=err>要实现窗口的布局，除了调用父窗口的</span><span class=w> </span><span class=n>UpdateChildrenPosition</span><span class=p>()</span><span class=err>方法外，当然也可以使</span><span class=w></span>
-<span class=err>用</span><span class=w> </span><span class=n>SWindow</span><span class=o>::</span><span class=n>Move</span><span class=w> </span><span class=err>方法直接修改窗口位置。</span><span class=w></span>
-<span class=err>看到这里大家应该已经明白是什么原因了。</span><span class=w></span>
+<span class=w> </span><span class=n>当</span><span class=w> </span><span class=k>this</span><span class=w> </span><span class=n>窗口位置改变后都会进入</span><span class=w> </span><span class=n>OnRelayout</span><span class=w> </span><span class=n>方法</span><span class=err>。</span><span class=w></span>
+<span class=n>注意函数第</span><span class=w> </span><span class=mi>15</span><span class=w> </span><span class=n>行</span><span class=err>：</span><span class=n>UpdateChildrenPosition</span><span class=p>()</span><span class=err>；</span><span class=n>这个调用的功能就是将</span><span class=w> </span><span class=k>this</span><span class=w> </span><span class=n>的所有子控</span><span class=w></span>
+<span class=n>件按照控件中定义的布局属性来自动布局</span><span class=err>。</span><span class=w></span>
+<span class=n>要实现窗口的布局</span><span class=err>，</span><span class=n>除了调用父窗口的</span><span class=w> </span><span class=n>UpdateChildrenPosition</span><span class=p>()</span><span class=n>方法外</span><span class=err>，</span><span class=n>当然也可以使</span><span class=w></span>
+<span class=n>用</span><span class=w> </span><span class=n>SWindow</span><span class=o>::</span><span class=n>Move</span><span class=w> </span><span class=n>方法直接修改窗口位置</span><span class=err>。</span><span class=w></span>
+<span class=n>看到这里大家应该已经明白是什么原因了</span><span class=err>。</span><span class=w></span>
 
-<span class=err>当然上述方法是</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>中使用的窗口创建及布局方法，具体到应用程序中使用代码创建控</span><span class=w></span>
-<span class=err>件还有一个地方需要注意。</span><span class=w></span>
-<span class=err>关键的问题是在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>系统中编译默认使用</span><span class=w> </span><span class=n>MT</span><span class=err>（静态链接）方式来链接</span><span class=w> </span><span class=n>CRT</span><span class=err>。</span><span class=w></span>
-<span class=n>MT</span><span class=w> </span><span class=err>方式编译时使用</span><span class=w> </span><span class=n>CRT</span><span class=w> </span><span class=err>分配内存是内存是属性调用的模块（</span><span class=n>DLL</span><span class=err>）的，内存的释放也因</span><span class=w></span>
-<span class=err>此必须在该模块内执行。</span><span class=w></span>
-<span class=err>如果用户直接使用</span><span class=w> </span><span class=k>new</span><span class=w> </span><span class=err>来分配一个窗口对象，并把它插入到</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>窗口链表中，在窗口释</span><span class=w></span>
-<span class=err>放的时机是在</span><span class=w> </span><span class=n>SWindow</span><span class=o>::</span><span class=n>OnFinalRelease</span><span class=p>()</span><span class=err>中（实际是基类</span><span class=w></span>
-<span class=n>TObjRefImpl2</span><span class=o>&lt;</span><span class=n>IObjRef</span><span class=p>,</span><span class=n>SWindow</span><span class=o>&gt;</span><span class=err>的方法</span><span class=p>)</span><span class=err>。</span><span class=w></span>
-<span class=n>SWindow</span><span class=w> </span><span class=err>的代码段是编译在</span><span class=w> </span><span class=n>soui</span><span class=p>.</span><span class=n>dll</span><span class=w> </span><span class=err>中，因此默认执行内存释放的代码是在</span><span class=w> </span><span class=n>soui</span><span class=p>.</span><span class=n>dll</span><span class=w></span>
-<span class=err>中，从而导致程序崩溃。</span><span class=w></span>
-<span class=err>要解决这个问题有两种方法：</span><span class=w></span>
-<span class=err>对于系统控件，用户应该使用</span><span class=w></span>
-<span class=n>SApplication</span><span class=o>::</span><span class=n>getSingleton</span><span class=p>().</span><span class=n>CreateWindowByName</span><span class=p>(</span><span class=n>xmlChild</span><span class=p>.</span><span class=n>name</span><span class=p>());</span><span class=err>来创建窗口对</span><span class=w></span>
-<span class=err>象。</span><span class=w></span>
-<span class=err>而对于用户自己派生实现的扩展窗口类并没有向</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>的窗口类厂注册时，只能使用</span><span class=w> </span><span class=k>new</span><span class=w></span>
-<span class=err>方法来创建窗口对象。注意</span><span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=err>的基类：</span><span class=n>TObjRefImpl2</span><span class=o>&lt;</span><span class=n>IObjRef</span><span class=p>,</span><span class=n>SWindow</span><span class=o>&gt;</span><span class=w></span>
+<span class=n>当然上述方法是</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>中使用的窗口创建及布局方法</span><span class=err>，</span><span class=n>具体到应用程序中使用代码创建控</span><span class=w></span>
+<span class=n>件还有一个地方需要注意</span><span class=err>。</span><span class=w></span>
+<span class=n>关键的问题是在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>系统中编译默认使用</span><span class=w> </span><span class=n>MT</span><span class=err>（</span><span class=n>静态链接</span><span class=err>）</span><span class=n>方式来链接</span><span class=w> </span><span class=n>CRT</span><span class=err>。</span><span class=w></span>
+<span class=n>MT</span><span class=w> </span><span class=n>方式编译时使用</span><span class=w> </span><span class=n>CRT</span><span class=w> </span><span class=n>分配内存是内存是属性调用的模块</span><span class=err>（</span><span class=n>DLL</span><span class=err>）</span><span class=n>的</span><span class=err>，</span><span class=n>内存的释放也因</span><span class=w></span>
+<span class=n>此必须在该模块内执行</span><span class=err>。</span><span class=w></span>
+<span class=n>如果用户直接使用</span><span class=w> </span><span class=k>new</span><span class=w> </span><span class=n>来分配一个窗口对象</span><span class=err>，</span><span class=n>并把它插入到</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>窗口链表中</span><span class=err>，</span><span class=n>在窗口释</span><span class=w></span>
+<span class=n>放的时机是在</span><span class=w> </span><span class=n>SWindow</span><span class=o>::</span><span class=n>OnFinalRelease</span><span class=p>()</span><span class=n>中</span><span class=err>（</span><span class=n>实际是基类</span><span class=w></span>
+<span class=n>TObjRefImpl2</span><span class=o>&lt;</span><span class=n>IObjRef</span><span class=p>,</span><span class=n>SWindow</span><span class=o>&gt;</span><span class=n>的方法</span><span class=p>)</span><span class=err>。</span><span class=w></span>
+<span class=n>SWindow</span><span class=w> </span><span class=n>的代码段是编译在</span><span class=w> </span><span class=n>soui</span><span class=p>.</span><span class=n>dll</span><span class=w> </span><span class=n>中</span><span class=err>，</span><span class=n>因此默认执行内存释放的代码是在</span><span class=w> </span><span class=n>soui</span><span class=p>.</span><span class=n>dll</span><span class=w></span>
+<span class=n>中</span><span class=err>，</span><span class=n>从而导致程序崩溃</span><span class=err>。</span><span class=w></span>
+<span class=n>要解决这个问题有两种方法</span><span class=err>：</span><span class=w></span>
+<span class=n>对于系统控件</span><span class=err>，</span><span class=n>用户应该使用</span><span class=w></span>
+<span class=n>SApplication</span><span class=o>::</span><span class=n>getSingleton</span><span class=p>().</span><span class=n>CreateWindowByName</span><span class=p>(</span><span class=n>xmlChild</span><span class=p>.</span><span class=n>name</span><span class=p>());</span><span class=n>来创建窗口对</span><span class=w></span>
+<span class=n>象</span><span class=err>。</span><span class=w></span>
+<span class=n>而对于用户自己派生实现的扩展窗口类并没有向</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>的窗口类厂注册时</span><span class=err>，</span><span class=n>只能使用</span><span class=w> </span><span class=k>new</span><span class=w></span>
+<span class=n>方法来创建窗口对象</span><span class=err>。</span><span class=n>注意</span><span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=n>的基类</span><span class=err>：</span><span class=n>TObjRefImpl2</span><span class=o>&lt;</span><span class=n>IObjRef</span><span class=p>,</span><span class=n>SWindow</span><span class=o>&gt;</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
-<span class=k>template</span><span class=o>&lt;</span><span class=k>class</span> <span class=nc>T</span><span class=o>&gt;</span><span class=w></span>
-<span class=k>class</span> <span class=nc>TObjRefImpl</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>T</span><span class=w></span>
+<span class=k>template</span><span class=o>&lt;</span><span class=k>class</span><span class=w> </span><span class=nc>T</span><span class=o>&gt;</span><span class=w></span>
+<span class=k>class</span><span class=w> </span><span class=nc>TObjRefImpl</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>T</span><span class=w></span>
 <span class=p>{</span><span class=w></span>
 <span class=k>public</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=n>TObjRefImpl</span><span class=p>()</span><span class=o>:</span><span class=n>m_cRef</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span><span class=w></span>
@@ -132,8 +132,8 @@
 <span class=k>protected</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=k>volatile</span><span class=w> </span><span class=n>LONG</span><span class=w> </span><span class=n>m_cRef</span><span class=p>;</span><span class=w></span>
 <span class=p>};</span><span class=w></span>
-<span class=k>template</span><span class=o>&lt;</span><span class=k>class</span> <span class=nc>T</span><span class=p>,</span><span class=k>class</span> <span class=nc>T2</span><span class=o>&gt;</span><span class=w></span>
-<span class=k>class</span> <span class=nc>TObjRefImpl2</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span><span class=w></span>
+<span class=k>template</span><span class=o>&lt;</span><span class=k>class</span><span class=w> </span><span class=nc>T</span><span class=p>,</span><span class=k>class</span><span class=w> </span><span class=nc>T2</span><span class=o>&gt;</span><span class=w></span>
+<span class=k>class</span><span class=w> </span><span class=nc>TObjRefImpl2</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span><span class=w></span>
 <span class=p>{</span><span class=w></span>
 <span class=k>public</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=k>virtual</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=n>OnFinalRelease</span><span class=p>()</span><span class=w></span>
@@ -141,7 +141,7 @@
 <span class=w> </span><span class=k>delete</span><span class=w> </span><span class=k>static_cast</span><span class=o>&lt;</span><span class=n>T2</span><span class=o>*&gt;</span><span class=p>(</span><span class=k>this</span><span class=p>);</span><span class=w></span>
 <span class=w> </span><span class=p>}</span><span class=w></span>
 <span class=p>};</span><span class=w></span>
-</code></pre></div> <p>注意代码中的 OnFinalRelease，它是一个虚方法。因此对于使用 new 创建的窗口对象， 只需要在窗口类中抄一段代码如下即可：</p> <div class=highlight><pre><span></span><code><span class=k>class</span> <span class=nc>myctrl</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SWindow</span><span class=w></span>
+</code></pre></div> <p>注意代码中的 OnFinalRelease，它是一个虚方法。因此对于使用 new 创建的窗口对象， 只需要在窗口类中抄一段代码如下即可：</p> <div class=highlight><pre><span></span><code><span class=k>class</span><span class=w> </span><span class=nc>myctrl</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SWindow</span><span class=w></span>
 <span class=p>{</span><span class=w></span>
 <span class=n>SOUI_CLASS_NAME</span><span class=p>(</span><span class=n>myctrl</span><span class=p>,</span><span class=sa>L</span><span class=s>&quot;myctrl&quot;</span><span class=p>)</span><span class=w></span>
 <span class=k>public</span><span class=o>:</span><span class=w></span>

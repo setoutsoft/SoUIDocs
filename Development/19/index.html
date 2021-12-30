@@ -61,7 +61,7 @@ animate=&quot;1&quot; /&gt;
  <span class=nt>&lt;window</span> <span class=na>pos=</span><span class=s>&quot;0,[0,-0,-50&quot;</span><span class=nt>&gt;</span>
  <span class=nt>&lt;window</span> <span class=na>pos=</span><span class=s>&quot;0,0,-64,-0&quot;</span> <span class=na>name=</span><span class=s>&quot;game_canvas&quot;</span> <span class=na>clipClient=</span><span class=s>&quot;1&quot;</span> 
 <span class=na>colorBkgnd=</span><span class=s>&quot;#ffffff&quot;</span><span class=nt>&gt;</span>
- <span class=c>&lt;!--比赛场地--&gt;</span>
+ <span class=cm>&lt;!--比赛场地--&gt;</span>
  <span class=nt>&lt;gifplayer</span> <span class=na>name=</span><span class=s>&quot;player_1&quot;</span> <span class=na>float=</span><span class=s>&quot;1&quot;</span> <span class=na>skin=</span><span class=s>&quot;gif_horse&quot;</span><span class=nt>&gt;</span>
  <span class=nt>&lt;text</span> <span class=na>pos=</span><span class=s>&quot;0,%1&quot;</span> <span class=na>colorText=</span><span class=s>&quot;rgb(255,0,0)&quot;</span> <span class=na>font=</span><span class=s>&quot;size:20&quot;</span><span class=nt>&gt;</span>1<span class=nt>&lt;/text&gt;</span>
  <span class=nt>&lt;/gifplayer&gt;</span>
@@ -99,7 +99,7 @@ animate=&quot;1&quot; /&gt;
  <span class=nt>&lt;/window&gt;</span>
  <span class=nt>&lt;/window&gt;</span>
 <span class=nt>&lt;/include&gt;</span>
-</code></pre></div> <p>在上述 XML 中，我们使用 gifplayer 控件定义了 4 匹马，但是我们并没有使用 pos 属性 定义它的位置，因为它的位置是在变化的，我们需要使用脚本在控制。注意上述 XML 中 为几个按钮控件指定的 on_command 属性。on_command 属性是窗口的点击事件属 性，指定后可以执行脚本中对应的函数。 事实上在 SOUI 中每一个事件都定义了一个在 XML 中可以映射到脚本脚本函数的属性， 这里简单介绍一下这个属性在哪里实现的：</p> <div class=highlight><pre><span></span><code><span class=k>class</span> <span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>EventCmd</span> <span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TplEventArgs</span><span class=o>&lt;</span><span class=n>EventCmd</span><span class=o>&gt;</span><span class=w></span>
+</code></pre></div> <p>在上述 XML 中，我们使用 gifplayer 控件定义了 4 匹马，但是我们并没有使用 pos 属性 定义它的位置，因为它的位置是在变化的，我们需要使用脚本在控制。注意上述 XML 中 为几个按钮控件指定的 on_command 属性。on_command 属性是窗口的点击事件属 性，指定后可以执行脚本中对应的函数。 事实上在 SOUI 中每一个事件都定义了一个在 XML 中可以映射到脚本脚本函数的属性， 这里简单介绍一下这个属性在哪里实现的：</p> <div class=highlight><pre><span></span><code><span class=k>class</span><span class=w> </span><span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>EventCmd</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TplEventArgs</span><span class=o>&lt;</span><span class=n>EventCmd</span><span class=o>&gt;</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=n>SOUI_CLASS_NAME</span><span class=p>(</span><span class=n>EventCmd</span><span class=p>,</span><span class=sa>L</span><span class=s>&quot;on_command&quot;</span><span class=p>)</span><span class=w></span>
 <span class=k>public</span><span class=o>:</span><span class=w></span>
@@ -108,8 +108,8 @@ animate=&quot;1&quot; /&gt;
 <span class=w> </span><span class=p>};</span><span class=w></span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=err>通过上面代码，可以发现，这个属性实际上就是这个事件类在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>中的字符串名字。</span><span class=w></span>
-<span class=err>下面我们看看实现这个跑马机真正使用的</span><span class=w> </span><span class=n>LUA</span><span class=w> </span><span class=err>脚本代码：</span><span class=w></span>
+<span class=w> </span><span class=n>通过上面代码</span><span class=err>，</span><span class=n>可以发现</span><span class=err>，</span><span class=n>这个属性实际上就是这个事件类在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>中的字符串名字</span><span class=err>。</span><span class=w></span>
+<span class=n>下面我们看看实现这个跑马机真正使用的</span><span class=w> </span><span class=n>LUA</span><span class=w> </span><span class=n>脚本代码</span><span class=err>：</span><span class=w></span>
 
 <span class=err>```</span><span class=n>lua</span><span class=w></span>
 <span class=n>win</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>nil</span><span class=p>;</span><span class=w></span>
@@ -118,13 +118,13 @@ animate=&quot;1&quot; /&gt;
 <span class=n>gamecanvas</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>nil</span><span class=p>;</span><span class=w></span>
 <span class=n>players</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{};</span><span class=w></span>
 <span class=n>flag_win</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>nil</span><span class=p>;</span><span class=w></span>
-<span class=n>coins_all</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mi>100</span><span class=p>;</span><span class=w> </span><span class=o>--</span><span class=err>现有资金</span><span class=w></span>
-<span class=n>coins_bet</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>}</span><span class=w> </span><span class=o>--</span><span class=err>下注金额</span><span class=w></span>
-<span class=n>bet_rate</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mi>4</span><span class=p>;</span><span class=w> </span><span class=o>--</span><span class=err>赔率</span><span class=w></span>
-<span class=n>prog_max</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mi>200</span><span class=p>;</span><span class=w> </span><span class=o>--</span><span class=err>最大步数</span><span class=w></span>
-<span class=n>prog_all</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>}</span><span class=w> </span><span class=o>--</span><span class=err>马匹进度</span><span class=w></span>
+<span class=n>coins_all</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mi>100</span><span class=p>;</span><span class=w> </span><span class=o>--</span><span class=n>现有资金</span><span class=w></span>
+<span class=n>coins_bet</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>}</span><span class=w> </span><span class=o>--</span><span class=n>下注金额</span><span class=w></span>
+<span class=n>bet_rate</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mi>4</span><span class=p>;</span><span class=w> </span><span class=o>--</span><span class=n>赔率</span><span class=w></span>
+<span class=n>prog_max</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mi>200</span><span class=p>;</span><span class=w> </span><span class=o>--</span><span class=n>最大步数</span><span class=w></span>
+<span class=n>prog_all</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>}</span><span class=w> </span><span class=o>--</span><span class=n>马匹进度</span><span class=w></span>
 <span class=n>function</span><span class=w> </span><span class=n>on_init</span><span class=p>(</span><span class=n>args</span><span class=p>)</span><span class=w></span>
-<span class=w> </span><span class=o>--</span><span class=err>初始化全局对象</span><span class=w></span>
+<span class=w> </span><span class=o>--</span><span class=n>初始化全局对象</span><span class=w></span>
 <span class=w> </span><span class=n>win</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>toHostWnd</span><span class=p>(</span><span class=n>args</span><span class=p>.</span><span class=n>sender</span><span class=p>);</span><span class=w></span>
 <span class=w> </span><span class=n>gamewnd</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nl>win</span><span class=p>:</span><span class=n>GetRoot</span><span class=p>()</span><span class=o>:</span><span class=n>FindChildByNameA</span><span class=p>(</span><span class=s>&quot;game_wnd&quot;</span><span class=p>,</span><span class=mi>-1</span><span class=p>);</span><span class=w></span>
 <span class=w> </span><span class=n>gamecanvas</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nl>gamewnd</span><span class=p>:</span><span class=n>FindChildByNameA</span><span class=p>(</span><span class=s>&quot;game_canvas&quot;</span><span class=p>,</span><span class=mi>-1</span><span class=p>);</span><span class=w></span>
@@ -135,7 +135,7 @@ animate=&quot;1&quot; /&gt;
 <span class=w> </span><span class=nl>gamecanvas</span><span class=p>:</span><span class=n>FindChildByNameA</span><span class=p>(</span><span class=s>&quot;player_3&quot;</span><span class=p>,</span><span class=mi>-1</span><span class=p>),</span><span class=w></span>
 <span class=w> </span><span class=nl>gamecanvas</span><span class=p>:</span><span class=n>FindChildByNameA</span><span class=p>(</span><span class=s>&quot;player_4&quot;</span><span class=p>,</span><span class=mi>-1</span><span class=p>)</span><span class=w></span>
 <span class=w> </span><span class=p>};</span><span class=w></span>
-<span class=w> </span><span class=o>--</span><span class=err>布局</span><span class=w></span>
+<span class=w> </span><span class=o>--</span><span class=n>布局</span><span class=w></span>
 <span class=w> </span><span class=n>on_canvas_size</span><span class=p>(</span><span class=n>nil</span><span class=p>);</span><span class=w></span>
 <span class=w> </span><span class=n>math</span><span class=p>.</span><span class=n>randomseed</span><span class=p>(</span><span class=n>os</span><span class=p>.</span><span class=n>time</span><span class=p>());</span><span class=w></span>
 <span class=w> </span><span class=o>--</span><span class=n>SMessageBox</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=n>T</span><span class=w> </span><span class=s>&quot;execute script function: on_init&quot;</span><span class=p>,</span><span class=w> </span><span class=n>T</span><span class=w> </span><span class=s>&quot;msgbox&quot;</span><span class=p>,</span><span class=w> </span><span class=mi>1</span><span class=p>);</span><span class=w></span>

@@ -18,23 +18,23 @@
 <span class=w> </span><span class=n>EVENT_MAP_END</span><span class=p>()</span><span class=w> </span>
 <span class=w> </span><span class=err>```</span><span class=w></span>
 
-<span class=w> </span><span class=err>上面的</span><span class=w> </span><span class=n>EVENT_MAP_BEGIN</span><span class=p>()</span><span class=err>和</span><span class=w> </span><span class=n>EVENT_MAP_END</span><span class=p>()</span><span class=err>结合构造出一个</span><span class=n>_HandleEvent</span><span class=w> </span><span class=err>函数</span><span class=w></span>
-<span class=err>的实现，具体可以自己展开这两个宏查看代码。</span><span class=w></span>
-<span class=err>同时</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>也提供了一组解析</span><span class=w> </span><span class=n>SOUI</span><span class=o>::</span><span class=n>EventArgs</span><span class=w> </span><span class=o>*</span><span class=n>pEvt</span><span class=w> </span><span class=err>的宏，如上例中的</span><span class=w></span>
-<span class=n>EVENT_NAME_COMMAND</span><span class=p>,</span><span class=w> </span><span class=n>EVENT_ID_COMMAND</span><span class=w> </span><span class=err>等。</span><span class=w></span>
-<span class=err>帮助用户直接从控件的</span><span class=w> </span><span class=n>name</span><span class=w> </span><span class=err>或者</span><span class=w> </span><span class=n>ID</span><span class=w> </span><span class=err>属性映射到消息响应函数。</span><span class=w></span>
-<span class=err>这种事件响应方式最大的好处是能够集中处理事件的分发，方便阅读代码，同时也和传统</span><span class=w></span>
-<span class=err>的</span><span class=w> </span><span class=n>MFC</span><span class=err>，</span><span class=n>WTL</span><span class=w> </span><span class=err>的编程风格类似，降低用户的学习成本。</span><span class=w></span>
-<span class=mf>4.8.2</span><span class=w> </span><span class=err>采用事件订阅的方式响应控件事件</span><span class=w></span>
-<span class=err>虽然事件映射表提供了一种简单有效的事件响应机制，由于事件映射表是一种编译期形成</span><span class=w></span>
-<span class=err>的静态的映射表，对于在运行期动态创建的控件的事件响应就无能为力了。</span><span class=w></span>
-<span class=err>在</span><span class=w> </span><span class=n>MFC</span><span class=w> </span><span class=err>中，程序员通过要重载窗口类的</span><span class=w> </span><span class=n>DefWindowProc</span><span class=w> </span><span class=err>来处理运行期间动态创建的控</span><span class=w></span>
-<span class=err>件发来的消息。</span><span class=w></span>
-<span class=err>这种方式灵活性够了，但是不够优雅，要在一个函数里做大量的</span><span class=w> </span><span class=n>swich</span><span class=w> </span><span class=err>分枝，导致这个处</span><span class=w></span>
-<span class=err>理函数很难维护。</span><span class=w></span>
-<span class=err>设计模式里的观察者模式可以比较好的解决这个问题。</span><span class=w></span>
-<span class=err>为些在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=err>中我提供了一种事件订阅的事件处理模式。</span><span class=w></span>
-<span class=err>我们先看一下</span><span class=w> </span><span class=n>demo</span><span class=w> </span><span class=err>中怎样处理列表控件的表头点击来执行排序操作：</span><span class=w></span>
+<span class=w> </span><span class=n>上面的</span><span class=w> </span><span class=n>EVENT_MAP_BEGIN</span><span class=p>()</span><span class=n>和</span><span class=w> </span><span class=n>EVENT_MAP_END</span><span class=p>()</span><span class=n>结合构造出一个_HandleEvent</span><span class=w> </span><span class=n>函数</span><span class=w></span>
+<span class=n>的实现</span><span class=err>，</span><span class=n>具体可以自己展开这两个宏查看代码</span><span class=err>。</span><span class=w></span>
+<span class=n>同时</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>也提供了一组解析</span><span class=w> </span><span class=n>SOUI</span><span class=o>::</span><span class=n>EventArgs</span><span class=w> </span><span class=o>*</span><span class=n>pEvt</span><span class=w> </span><span class=n>的宏</span><span class=err>，</span><span class=n>如上例中的</span><span class=w></span>
+<span class=n>EVENT_NAME_COMMAND</span><span class=p>,</span><span class=w> </span><span class=n>EVENT_ID_COMMAND</span><span class=w> </span><span class=n>等</span><span class=err>。</span><span class=w></span>
+<span class=n>帮助用户直接从控件的</span><span class=w> </span><span class=n>name</span><span class=w> </span><span class=n>或者</span><span class=w> </span><span class=n>ID</span><span class=w> </span><span class=n>属性映射到消息响应函数</span><span class=err>。</span><span class=w></span>
+<span class=n>这种事件响应方式最大的好处是能够集中处理事件的分发</span><span class=err>，</span><span class=n>方便阅读代码</span><span class=err>，</span><span class=n>同时也和传统</span><span class=w></span>
+<span class=n>的</span><span class=w> </span><span class=n>MFC</span><span class=err>，</span><span class=n>WTL</span><span class=w> </span><span class=n>的编程风格类似</span><span class=err>，</span><span class=n>降低用户的学习成本</span><span class=err>。</span><span class=w></span>
+<span class=mf>4.8.2</span><span class=w> </span><span class=n>采用事件订阅的方式响应控件事件</span><span class=w></span>
+<span class=n>虽然事件映射表提供了一种简单有效的事件响应机制</span><span class=err>，</span><span class=n>由于事件映射表是一种编译期形成</span><span class=w></span>
+<span class=n>的静态的映射表</span><span class=err>，</span><span class=n>对于在运行期动态创建的控件的事件响应就无能为力了</span><span class=err>。</span><span class=w></span>
+<span class=n>在</span><span class=w> </span><span class=n>MFC</span><span class=w> </span><span class=n>中</span><span class=err>，</span><span class=n>程序员通过要重载窗口类的</span><span class=w> </span><span class=n>DefWindowProc</span><span class=w> </span><span class=n>来处理运行期间动态创建的控</span><span class=w></span>
+<span class=n>件发来的消息</span><span class=err>。</span><span class=w></span>
+<span class=n>这种方式灵活性够了</span><span class=err>，</span><span class=n>但是不够优雅</span><span class=err>，</span><span class=n>要在一个函数里做大量的</span><span class=w> </span><span class=n>swich</span><span class=w> </span><span class=n>分枝</span><span class=err>，</span><span class=n>导致这个处</span><span class=w></span>
+<span class=n>理函数很难维护</span><span class=err>。</span><span class=w></span>
+<span class=n>设计模式里的观察者模式可以比较好的解决这个问题</span><span class=err>。</span><span class=w></span>
+<span class=n>为些在</span><span class=w> </span><span class=n>SOUI</span><span class=w> </span><span class=n>中我提供了一种事件订阅的事件处理模式</span><span class=err>。</span><span class=w></span>
+<span class=n>我们先看一下</span><span class=w> </span><span class=n>demo</span><span class=w> </span><span class=n>中怎样处理列表控件的表头点击来执行排序操作</span><span class=err>：</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
 <span class=kt>void</span><span class=w> </span><span class=n>CMainDlg</span><span class=o>::</span><span class=n>InitListCtrl</span><span class=p>()</span><span class=w></span>

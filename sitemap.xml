@@ -390,4 +390,9 @@
          <lastmod>2021-12-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://X.org/Show/show/</loc>
+         <lastmod>2021-12-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
