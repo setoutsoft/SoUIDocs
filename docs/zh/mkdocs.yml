@@ -80,6 +80,7 @@ nav:
   - Development/24.md
   - Development/25.md
   - Development/26.md
+  - Development/27.md
 
 - 控件:
   - Control/Summary.md
@@ -123,6 +124,8 @@ nav:
   - Others/1.md
   - Others/2.md
   - Others/3.md
+  - Others/4.md
+
 - 更新:
   - updatelog.md
 markdown_extensions:
