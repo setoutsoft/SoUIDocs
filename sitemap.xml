@@ -326,6 +326,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://X.org/Development/27/</loc>
+         <lastmod>2022-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://X.org/Development/3/</loc>
          <lastmod>2022-01-01</lastmod>
          <changefreq>daily</changefreq>
@@ -362,6 +367,11 @@
     </url>
     <url>
          <loc>https://X.org/Others/3/</loc>
+         <lastmod>2022-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://X.org/Others/4/</loc>
          <lastmod>2022-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
