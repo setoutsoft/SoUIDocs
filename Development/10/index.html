@@ -164,7 +164,7 @@
 <span class=cm> * </span>
 <span class=cm> * Describe</span>
 <span class=cm> */</span><span class=w></span>
-<span class=w> </span><span class=k>class</span><span class=w> </span><span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>ISkinObj</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SObject</span><span class=p>,</span><span class=k>public</span><span class=w></span>
+<span class=w> </span><span class=k>class</span><span class=w> </span><span class=nc>SOUI_EXP</span><span class=w> </span><span class=n>ISkinObj</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SObject</span><span class=p>,</span><span class=k>public</span><span class=w></span>
 <span class=n>TObjRefImpl2</span><span class=o>&lt;</span><span class=n>IObjRef</span><span class=p>,</span><span class=n>ISkinObj</span><span class=o>&gt;</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=k>public</span><span class=o>:</span><span class=w></span>
@@ -324,7 +324,7 @@
 <span class=w> </span><span class=kt>int</span><span class=w> </span><span class=nf>LoadFromMemory</span><span class=p>(</span><span class=n>LPVOID</span><span class=w> </span><span class=n>pBits</span><span class=p>,</span><span class=kt>size_t</span><span class=w> </span><span class=n>szData</span><span class=p>);</span><span class=w></span>
 <span class=w> </span><span class=n>SOUI_ATTRS_BEGIN</span><span class=p>()</span><span class=w></span>
 <span class=w> </span><span class=n>ATTR_CUSTOM</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;src&quot;</span><span class=p>,</span><span class=n>OnAttrSrc</span><span class=p>)</span><span class=w> </span><span class=c1>//XML 文件中指定的图片资源</span>
-<span class=n>名</span><span class=p>,(</span><span class=nl>type</span><span class=p>:</span><span class=n>name</span><span class=p>)</span><span class=w></span>
+<span class=n>名</span><span class=p>,(</span><span class=n>type</span><span class=o>:</span><span class=n>name</span><span class=p>)</span><span class=w></span>
 <span class=w> </span><span class=n>SOUI_ATTRS_END</span><span class=p>()</span><span class=w></span>
 <span class=w> </span><span class=k>protected</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=n>LRESULT</span><span class=w> </span><span class=n>OnAttrSrc</span><span class=p>(</span><span class=k>const</span><span class=w> </span><span class=n>SStringW</span><span class=w> </span><span class=o>&amp;</span><span class=n>strValue</span><span class=p>,</span><span class=n>BOOL</span><span class=w> </span><span class=n>bLoading</span><span class=p>);</span><span class=w></span>

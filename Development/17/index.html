@@ -84,14 +84,14 @@
 <span class=n>这就需要看一下</span><span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=n>或者</span><span class=w> </span><span class=n>SSkinObjBase</span><span class=w> </span><span class=n>这两个类的实现了</span><span class=err>。</span><span class=w></span>
 
 <span class=err>```</span><span class=n>cpp</span><span class=w></span>
-<span class=k>class</span><span class=w> </span><span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>SWindow</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SObject</span><span class=w></span>
+<span class=k>class</span><span class=w> </span><span class=nc>SOUI_EXP</span><span class=w> </span><span class=n>SWindow</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SObject</span><span class=w></span>
 <span class=w> </span><span class=p>,</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>SMsgHandleState</span><span class=w></span>
 <span class=w> </span><span class=p>,</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl2</span><span class=o>&lt;</span><span class=n>IObjRef</span><span class=p>,</span><span class=n>SWindow</span><span class=o>&gt;</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=n>SOUI_CLASS_NAME</span><span class=p>(</span><span class=n>SWindow</span><span class=p>,</span><span class=w> </span><span class=sa>L</span><span class=s>&quot;window&quot;</span><span class=p>)</span><span class=w></span>
 <span class=w> </span><span class=c1>//....</span>
 <span class=w> </span><span class=p>};</span><span class=w></span>
-<span class=w> </span><span class=k>class</span><span class=w> </span><span class=nc>SOUI_EXP</span><span class=w> </span><span class=nl>SSkinObjBase</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=o>&lt;</span><span class=n>ISkinObj</span><span class=o>&gt;</span><span class=w></span>
+<span class=w> </span><span class=k>class</span><span class=w> </span><span class=nc>SOUI_EXP</span><span class=w> </span><span class=n>SSkinObjBase</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=k>public</span><span class=w> </span><span class=n>TObjRefImpl</span><span class=o>&lt;</span><span class=n>ISkinObj</span><span class=o>&gt;</span><span class=w></span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w> </span><span class=c1>//......</span>
 <span class=w> </span><span class=p>};</span><span class=w></span>

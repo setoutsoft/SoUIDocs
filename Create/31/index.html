@@ -137,9 +137,9 @@ UI? Just so so!<span class=nt>&lt;/text&gt;</span>
 <span class=c1>////////////////////////////////////////////////////////////////////////////</span>
 <span class=o>/</span><span class=w></span>
 <span class=cp>#pragma once</span>
-<span class=n>class</span><span class=w> </span><span class=nl>CMainWnd</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>public</span><span class=w> </span><span class=n>SHostWnd</span><span class=w></span>
+<span class=n>class</span><span class=w> </span><span class=n>CMainWnd</span><span class=w> </span><span class=o>:</span><span class=w> </span><span class=n>public</span><span class=w> </span><span class=n>SHostWnd</span><span class=w></span>
 <span class=p>{</span><span class=w></span>
-<span class=nl>public</span><span class=p>:</span><span class=w></span>
+<span class=n>public</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=n>CMainWnd</span><span class=p>()</span><span class=w> </span>
 <span class=w> </span><span class=o>:</span><span class=w> </span><span class=n>SHostWnd</span><span class=p>(</span><span class=n>_T</span><span class=p>(</span><span class=s>&quot;LAYOUT:XML_MAINWND&quot;</span><span class=p>))</span><span class=c1>//这里定义主界面需要使用的布局文件</span>
 <span class=w> </span><span class=p>{</span><span class=w></span>
@@ -190,7 +190,7 @@ UI? Just so so!<span class=nt>&lt;/text&gt;</span>
 <span class=w> </span><span class=n>m_bLayoutInited</span><span class=o>=</span><span class=n>TRUE</span><span class=p>;</span><span class=w></span>
 <span class=w> </span><span class=k>return</span><span class=w> </span><span class=mi>0</span><span class=p>;</span><span class=w></span>
 <span class=w> </span><span class=p>}</span><span class=w></span>
-<span class=nl>protected</span><span class=p>:</span><span class=w></span>
+<span class=n>protected</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=c1>//按钮事件处理映射表</span>
 <span class=w> </span><span class=n>EVENT_MAP_BEGIN</span><span class=p>()</span><span class=w></span>
 <span class=w> </span><span class=n>EVENT_NAME_COMMAND</span><span class=p>(</span><span class=sa>L</span><span class=s>&quot;btn_close&quot;</span><span class=p>,</span><span class=n>OnClose</span><span class=p>)</span><span class=w></span>
@@ -207,7 +207,7 @@ UI? Just so so!<span class=nt>&lt;/text&gt;</span>
 <span class=n>CHAIN_MSG_MAP</span><span class=p>(</span><span class=n>SHostWnd</span><span class=p>)</span><span class=c1>//注意将没有处理的消息交给基类处理</span>
 <span class=w> </span><span class=n>REFLECT_NOTIFICATIONS_EX</span><span class=p>()</span><span class=w></span>
 <span class=w> </span><span class=n>END_MSG_MAP</span><span class=p>()</span><span class=w></span>
-<span class=nl>private</span><span class=p>:</span><span class=w></span>
+<span class=n>private</span><span class=o>:</span><span class=w></span>
 <span class=w> </span><span class=n>BOOL</span><span class=w> </span><span class=n>m_bLayoutInited</span><span class=p>;</span><span class=w></span>
 <span class=p>};</span><span class=w></span>
 </code></pre></div> <p>为了介绍方便，这个窗口类所有代码都在这个 mainwnd.h 文件里。 再进一步填充 main 函数</p> <div class=highlight><pre><span></span><code><span class=p>{</span><span class=w></span>
