@@ -8,15 +8,27 @@
 import os
 import re
 import shutil
+import sys
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from multiprocessing import Pool
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-import mkdocs.commands.build
-import mkdocs.commands.serve
-import mkdocs.config
-import mkdocs.utils
+# 添加当前目录到Python路径中
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+try:
+    import mkdocs.commands.build
+    import mkdocs.commands.serve
+    import mkdocs.config
+    import mkdocs.utils
+except ImportError as e:
+    print(f"Error importing mkdocs modules: {e}")
+    print("Please make sure mkdocs is installed: pip install mkdocs")
+    print(f"Current Python path: {sys.path}")
+    print(f"Current working directory: {os.getcwd()}")
+    raise
+
 import typer
 import yaml
 from jinja2 import Template

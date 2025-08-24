@@ -43,17 +43,11 @@ nav:
   - Overview/14.md
 - 编译:
   - BuildSoUI/build.md
- # - 编码分析:
-  #  - misc/encode/communication.md
-  #- misc/prefix.md
- # - 图片分析:
-  #  - misc/picture/introduction.md
 - 创建:
   - Create/31.md
   - Create/32.md
   - Create/33.md
   - Create/34.md
-
 - 开发:
   - Development/0.md
   - Development/1.md
@@ -81,7 +75,6 @@ nav:
   - Development/25.md
   - Development/26.md
   - Development/27.md
-
 - 控件:
   - Control/Summary.md
   - Control/51.md
@@ -125,7 +118,6 @@ nav:
   - Others/2.md
   - Others/3.md
   - Others/4.md
-
 - 更新:
   - updatelog.md
 markdown_extensions:

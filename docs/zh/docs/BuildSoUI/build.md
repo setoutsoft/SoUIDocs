@@ -96,17 +96,4 @@ USING_CLR:项目提供“公共语言运行时”支持；
 
   - 选择soui源码目录和cmake临时文件生成目录，点击Configure。
 
-    ![image](./doc/cmake/01.png)
-  - 弹出临时文件目录不存在，是否创建？选择Yes。
-
-    ![image](./doc/cmake/02.png)
-  - 选择需要生成的VS版本(如果未安装会生成失败,根据实际情况选择)和需要生成的编译版本(Win32\x64)，点击Finish。
-
-    ![image](./doc/cmake/04.png)
-  - 根据需要选择生成方式：内核和组件模块的(静态链接或动态链接)；是否使用CRT；Unicode或多字节；点击Generate开始生成。
-
-    ![image](./doc/cmake/05.png)
-  - 生成完毕,显示"Generating done"，此时点击Open Project打开项目(也可以双击cmake临时文件生成目录中找到sln文件打开)
-    ![image](./doc/cmake/06.png)
-  - 在VS中编译，编译完成后,在soui源码的bin目录下可以找到生成出来的dll(或lib)和exe。
-    ![image](./doc/cmake/07.png)
+  

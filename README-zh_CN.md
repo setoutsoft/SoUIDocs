@@ -5,3 +5,6 @@
 
 
 欢迎来到soui的文档中心，目前还不完善，请提交pull request来帮助，感激不尽
+
+python scripts/docs.py build-all
+python scripts/docs.py serve 
