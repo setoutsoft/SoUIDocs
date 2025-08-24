@@ -1,4 +1,10 @@
-# modified based on https://github.com/tiangolo/fastapi/blob/master/scripts/docs.py
+# 请在项目根目录下执行此脚本
+# 如果直接运行出现导入错误，请先创建并激活虚拟环境：
+# python3 -m venv venv
+# source venv/bin/activate
+# pip install -r requirements.txt
+# 然后运行: python scripts/docs.py
+
 import os
 import re
 import shutil
